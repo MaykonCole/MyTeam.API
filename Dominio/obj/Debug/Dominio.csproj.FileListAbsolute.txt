@@ -3,3 +3,4 @@ C:\Users\DevDesiger\source\repos\MyTeam\Dominio\bin\Debug\Dominio.pdb
 C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.dll
 C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.pdb
+C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache

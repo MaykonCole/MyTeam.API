@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Data.Context;
 using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.EntityFrameworkCore;
 
 namespace MyTeam.API.Controllers
 {
@@ -13,47 +14,23 @@ namespace MyTeam.API.Controllers
     [ApiController]
     public class TimeController : ControllerBase
     {
-
-        public List<Time> Times = new List<Time>()
+        private readonly DataContext _context;
+        public TimeController(DataContext context)
         {
-           new Time()
-            {
-               Id = 1,
-               NomeTime = "Huntersx",
-               LinkEscudo = "https://3.bp.blogspot.com/-EYC1tYqWkkg/W0GN7cbUVrI/AAAAAAAAANc/Te0De9OprMwT61tUFLHBMgMk8Vnib8ViwCLcBGAs/s1600/352.jpg",
-               DataCadastro = DateTime.Now,
-               DataAtualizacao = null,
-            },
-           new Time()
-           {
-               Id = 2,
-               NomeTime = "Bleuz",
-               LinkEscudo = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqjj6BQUYM_7q65lgATuGvXPLKo6iaJJYIe_bhrc3eRokzozfLKF73Odj_T-rgYGLoEUU&usqp=CAU",
-               DataCadastro = DateTime.Now,
-               DataAtualizacao = null,
-            },
-           new Time()
-            {
-               Id = 3,
-               NomeTime = "Raça Gaucha",
-               LinkEscudo = "data:image/jpeg;base64,/9j/4AAUXGRobHx0eGRoYIiAYGysmICUwLjczNS03LS8t=",
-               DataCadastro = DateTime.Now,
-               DataAtualizacao = null,
-            }
-
-        };
-        public TimeController() { }
+            _context = context;
+        }
+        
 
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(Times);
+            return Ok(_context.Times);
         }
 
         [HttpGet("{id:int}")]
         public IActionResult GetPorId(int id)
         {
-            var time = Times.FirstOrDefault(t => t.Id == id);
+            var time = _context.Times.FirstOrDefault(t => t.Id == id);
 
             if (time == null) return BadRequest("Time com ID " + id + " não localizado.");
 
@@ -63,7 +40,7 @@ namespace MyTeam.API.Controllers
         [HttpGet("pornome")]
         public IActionResult GetPorNomeQueryString(string nome)
         {
-            var time = Times.FirstOrDefault(t => t.NomeTime.Contains(nome));
+            var time = _context.Times.FirstOrDefault(t => t.NomeTime.Contains(nome));
 
             if (time == null) return BadRequest("Time com Nome " + nome + " não localizado.");
 
@@ -73,7 +50,7 @@ namespace MyTeam.API.Controllers
         [HttpGet("{nome}")]
         public IActionResult GetPorNome(string nome)
         {
-            var time = Times.FirstOrDefault(t => t.NomeTime.Contains(nome));
+            var time = _context.Times.FirstOrDefault(t => t.NomeTime.Contains(nome));
 
             if (time == null) return BadRequest("Time com Nome " + nome + " não localizado.");
 
@@ -83,46 +60,102 @@ namespace MyTeam.API.Controllers
         [HttpPost]
         public IActionResult Post(Time time)
         {
+            if (time != null)
+            {
+
+                var validaNome = _context.Times.FirstOrDefault(t => t.NomeTime.Contains(time.NomeTime));
+
+                if (validaNome == null)
+                {
+                    var validaEscudo = _context.Times.FirstOrDefault(t => t.LinkEscudo.Contains(time.LinkEscudo));
+
+                    if (validaEscudo == null)
+                    {
+                        _context.Add(time);
+                        _context.SaveChanges();
+                        return Ok(_context.Times);
+                    }
+                    else
+                    {
+                        return Ok("Escudo já existe para um outro time.");
+                    }
+                }
+                else
+                {
+                    return Ok("Time já existe com este nome.");
+                }
+            }
+            return BadRequest("Time invalido!");
 
 
 
-            return Ok(Times);
         }
 
         [HttpPut("{id}")]
         public IActionResult Put(int id, Time time)
         {
+            var validatime = _context.Players.AsNoTracking().FirstOrDefault(t => t.Id == id);
 
+            if (validatime != null)
+            {
+                _context.Update(time);
+                _context.SaveChanges();
 
+                return Ok(_context.Times);
+            }
 
-            return Ok(Times);
+            return BadRequest("Time não encontrado!");
+
         }
 
         [HttpPatch("{id}")]
         public IActionResult Patch(int id, Time time)
         {
 
+            var validatime = _context.Times.AsNoTracking().FirstOrDefault(t => t.Id == id);
+
+            if (validatime != null)
+            {
+                _context.Update(time);
+                _context.SaveChanges();
+
+                return Ok(_context.Times);
+            }
+
+            return BadRequest("Timer não encontrado!");
 
 
-            return Ok(Times);
         }
 
         [HttpDelete("excluirtimeporid/{id}")]
         public IActionResult DeletePorId(int id)
         {
+            var time = _context.Times.FirstOrDefault(t => t.Id == id);
 
+            if (time != null)
+            {
+                _context.Remove(time);
+                _context.SaveChanges();
+                return Ok(_context.Times);
+            }
 
-
-            return Ok(Times);
+            return BadRequest("Time não encontrado!");
         }
 
         [HttpDelete("excluirtimepornome/{nome}")]
         public IActionResult DeletePorNome(string nome)
         {
 
+            var time = _context.Times.FirstOrDefault(t => t.NomeTime == nome);
 
+            if (time != null)
+            {
+                _context.Remove(time);
+                _context.SaveChanges();
+                return Ok(_context.Times);
+            }
 
-            return Ok(Times);
+            return BadRequest("Time não encontrado!");
         }
 
 

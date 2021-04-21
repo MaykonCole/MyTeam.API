@@ -2,13 +2,15 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+
 
 namespace MyTeam.API
 {
@@ -24,6 +26,14 @@ namespace MyTeam.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+           // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
+
+        //    services.AddControllers().AddNewtonsoftJson(options =>
+        //options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+
+            services.AddDbContext<DataContext>(
+                context => context.UseSqlServer(Configuration.GetConnectionString("StringConexao")));
+
             services.AddControllers();
         }
 
