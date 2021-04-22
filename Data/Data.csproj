@@ -141,6 +141,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\DataContext.cs" />
+    <Compile Include="Context\IRepository.cs" />
+    <Compile Include="Context\Repository.cs" />
     <Compile Include="Migrations\20210421001153_MigracaoComCargaInicial.cs" />
     <Compile Include="Migrations\20210421001153_MigracaoComCargaInicial.designer.cs">
       <DependentUpon>20210421001153_MigracaoComCargaInicial.cs</DependentUpon>

@@ -17,42 +17,55 @@ namespace MyTeam.API.Controllers
     public class PlayerController : ControllerBase
     {
 
-        private readonly DataContext _context;
-        public PlayerController(DataContext context)
+     //   private readonly DataContext _context;
+
+        private readonly IRepository _repo;
+        public PlayerController( IRepository repo)
         {
-            _context = context;
+           
+            _repo = repo;
         }
         // GET: api/<PlayerController>
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_context.Players);
+            return Ok(await _repo.BuscaPlayers());
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult GetPorId(int id)
+        public async Task<IActionResult> GetPorId(int id)
         {
-            var player = _context.Players.FirstOrDefault(t => t.Id == id);
+            var player = await _repo.BuscaPlayerPorId(id);
 
             if (player == null) return BadRequest("Player com ID " + id + " não localizado.");
 
             return Ok(player);
         }
 
-        [HttpGet("pornome")]
-        public IActionResult GetPorNomeQueryString(string nome)
+        [HttpGet("pornome/{nome}")]
+        public async Task<IActionResult> GetPorNomeQueryString(string nome)
         {
-            var player = _context.Players.FirstOrDefault(t => t.Nome.Contains(nome));
+            var player = await _repo.BuscaPlayerNome(nome);
 
             if (player == null) return BadRequest("Player " + nome + " não localizado.");
 
             return Ok(player);
         }
 
-        [HttpGet("{nome}")]
-        public IActionResult GetPorNome(string nome)
+        [HttpGet("porpsn/{nome}")]
+        public async Task<IActionResult> GetPorPsnQueryString(string nome)
         {
-            var player = _context.Players.FirstOrDefault(t => t.Nome.Contains(nome));
+            var player = await _repo.BuscaPlayerPorPsn(nome);
+
+            if (player == null) return BadRequest("PSN " + nome + " não localizado.");
+
+            return Ok(player);
+        }
+
+        [HttpGet("{nome}")]
+        public async Task<IActionResult> GetPorNome(string nome)
+        {
+            var player = await _repo.BuscaPlayerNome(nome);
 
             if (player == null) return BadRequest("Player " + nome + " não localizado.");
 
@@ -60,22 +73,22 @@ namespace MyTeam.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Player player)
+        public async Task<IActionResult>  Post(Player player)
         {
             if (player != null) {
                 
 
-               var validaNome = _context.Players.FirstOrDefault(t => t.Nome.Contains(player.Nome));
+               var validaNome = await _repo.BuscaPlayerNome(player.Nome);
 
                 if (validaNome == null)
                 {
-                    var validaPsn = _context.Players.FirstOrDefault(t => t.Psn.Contains(player.Psn));
+                    var validaPsn = await _repo.BuscaPlayerPorPsn(player.Psn);
 
                     if (validaPsn == null)
                     {
-                        _context.Add(player);
-                        _context.SaveChanges();
-                        return Ok(_context.Players);
+                        _repo.Add(player);
+                       await _repo.SaveChangeAsync();
+                        return Ok(player);
                     }
                     else
                     {
@@ -91,49 +104,48 @@ namespace MyTeam.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Player player)
+        public async Task<IActionResult> Put(int id, Player player)
         {
 
-            var validaplayer = _context.Players.AsNoTracking().FirstOrDefault(t => t.Id == id);
+            var validaplayer = await _repo.BuscaPlayerPorId(id);
 
             if (validaplayer != null)
             {
-                _context.Update(player);
-                _context.SaveChanges();
-                return Ok(_context.Players);
+                _repo.Update(player);
+               await _repo.SaveChangeAsync();
+                return Ok(await _repo.BuscaPlayers());
             }
 
             return BadRequest("Player não encontrado!");
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Player player)
+        public async Task<IActionResult> Patch(int id, Player player)
         {
 
-            var validaplayer = _context.Players.AsNoTracking().FirstOrDefault(t => t.Id == id);
+            var validaplayer = await _repo.BuscaPlayerPorId(id);
 
             if (validaplayer != null)
             {
-                _context.Update(player);
-                _context.SaveChanges();
-
-                return Ok(_context.Players);
+                _repo.Update(player);
+                await _repo.SaveChangeAsync();
+                return Ok(await _repo.BuscaPlayers());
             }
 
             return BadRequest("Player não encontrado!");
         }
 
         [HttpDelete("excluirplayerporid/{id}")]
-        public IActionResult DeletePorId(int id)
+        public async Task<IActionResult> DeletePorId(int id)
         {
-            var player = _context.Players.FirstOrDefault(t => t.Id == id);
+            var player = await _repo.BuscaPlayerPorId(id);
 
 
             if (player != null)
             {
-                _context.Remove(player);
-                _context.SaveChanges();
-                return Ok(_context.Players);
+                _repo.Delete(player);
+                await _repo.SaveChangeAsync();
+                return Ok(await _repo.BuscaPlayers());
             }
 
             return BadRequest("Player não encontrado!");
@@ -141,16 +153,16 @@ namespace MyTeam.API.Controllers
         }
 
         [HttpDelete("excluirplayerpornome/{nome}")]
-        public IActionResult DeletePorNome(string nome)
+        public async Task<IActionResult> DeletePorNome(string nome)
         {
 
-            var player = _context.Players.FirstOrDefault(t => t.Nome == nome);
+            var player = await _repo.BuscaPlayerNome(nome);
 
             if (player != null)
             {
-                _context.Remove(player);
-                _context.SaveChanges();
-                return Ok(_context.Players);
+                _repo.Delete(player);
+                await _repo.SaveChangeAsync();
+                return Ok(await _repo.BuscaPlayers());
             }
 
             return BadRequest("Player não encontrado!");

@@ -14,23 +14,24 @@ namespace MyTeam.API.Controllers
     [ApiController]
     public class TimeController : ControllerBase
     {
-        private readonly DataContext _context;
-        public TimeController(DataContext context)
+        //private readonly DataContext _context;
+        private readonly IRepository _repo;
+        public TimeController( IRepository repo)
         {
-            _context = context;
+           
+            _repo = repo;
         }
-        
 
         [HttpGet]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok(_context.Times);
+            return Ok(await _repo.BuscaTimes());
         }
 
         [HttpGet("{id:int}")]
-        public IActionResult GetPorId(int id)
+        public async Task<IActionResult> GetPorId(int id)
         {
-            var time = _context.Times.FirstOrDefault(t => t.Id == id);
+            var time = await _repo.BuscaTimePorId(id);
 
             if (time == null) return BadRequest("Time com ID " + id + " não localizado.");
 
@@ -38,9 +39,9 @@ namespace MyTeam.API.Controllers
         }
 
         [HttpGet("pornome")]
-        public IActionResult GetPorNomeQueryString(string nome)
+        async Task<IActionResult>  GetPorNomeQueryString(string nome)
         {
-            var time = _context.Times.FirstOrDefault(t => t.NomeTime.Contains(nome));
+            var time = await _repo.BuscaTimePorNome(nome);
 
             if (time == null) return BadRequest("Time com Nome " + nome + " não localizado.");
 
@@ -48,9 +49,9 @@ namespace MyTeam.API.Controllers
         }
 
         [HttpGet("{nome}")]
-        public IActionResult GetPorNome(string nome)
+        async Task<IActionResult> GetPorNome(string nome)
         {
-            var time = _context.Times.FirstOrDefault(t => t.NomeTime.Contains(nome));
+            var time = await _repo.BuscaTimePorNome(nome);
 
             if (time == null) return BadRequest("Time com Nome " + nome + " não localizado.");
 
@@ -58,22 +59,21 @@ namespace MyTeam.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(Time time)
+        async Task<IActionResult> Post(Time time)
         {
             if (time != null)
             {
-
-                var validaNome = _context.Times.FirstOrDefault(t => t.NomeTime.Contains(time.NomeTime));
+                var validaNome = await _repo.BuscaTimePorNome(time.NomeTime);
 
                 if (validaNome == null)
                 {
-                    var validaEscudo = _context.Times.FirstOrDefault(t => t.LinkEscudo.Contains(time.LinkEscudo));
+                    var validaEscudo = await _repo.BuscaTimePorEscudo(time.LinkEscudo);
 
                     if (validaEscudo == null)
                     {
-                        _context.Add(time);
-                        _context.SaveChanges();
-                        return Ok(_context.Times);
+                        _repo.Add(time);
+                        await _repo.SaveChangeAsync();
+                        return Ok(await _repo.BuscaTimes());
                     }
                     else
                     {
@@ -87,21 +87,18 @@ namespace MyTeam.API.Controllers
             }
             return BadRequest("Time invalido!");
 
-
-
         }
 
         [HttpPut("{id}")]
-        public IActionResult Put(int id, Time time)
+        async Task<IActionResult> Put(int id, Time time)
         {
-            var validatime = _context.Players.AsNoTracking().FirstOrDefault(t => t.Id == id);
+            var validatime = await _repo.BuscaTimePorId(id);
 
             if (validatime != null)
             {
-                _context.Update(time);
-                _context.SaveChanges();
-
-                return Ok(_context.Times);
+                _repo.Update(time);
+               await _repo.SaveChangeAsync();
+                return Ok(await _repo.BuscaTimes());
             }
 
             return BadRequest("Time não encontrado!");
@@ -109,50 +106,46 @@ namespace MyTeam.API.Controllers
         }
 
         [HttpPatch("{id}")]
-        public IActionResult Patch(int id, Time time)
+        async Task<IActionResult> Patch(int id, Time time)
         {
 
-            var validatime = _context.Times.AsNoTracking().FirstOrDefault(t => t.Id == id);
+            var validatime = await _repo.BuscaTimePorId(id);
 
             if (validatime != null)
             {
-                _context.Update(time);
-                _context.SaveChanges();
-
-                return Ok(_context.Times);
+                _repo.Update(time);
+                await _repo.SaveChangeAsync();
+                return Ok(await _repo.BuscaTimes());
             }
 
             return BadRequest("Timer não encontrado!");
-
-
         }
 
         [HttpDelete("excluirtimeporid/{id}")]
-        public IActionResult DeletePorId(int id)
+        async Task<IActionResult> DeletePorId(int id)
         {
-            var time = _context.Times.FirstOrDefault(t => t.Id == id);
+             var time = await _repo.BuscaTimePorId(id);
 
             if (time != null)
             {
-                _context.Remove(time);
-                _context.SaveChanges();
-                return Ok(_context.Times);
+                _repo.Delete(time);
+                await _repo.SaveChangeAsync();
+                return Ok(await _repo.BuscaTimes());
             }
 
             return BadRequest("Time não encontrado!");
         }
 
         [HttpDelete("excluirtimepornome/{nome}")]
-        public IActionResult DeletePorNome(string nome)
+        async Task<IActionResult> DeletePorNome(string nome)
         {
-
-            var time = _context.Times.FirstOrDefault(t => t.NomeTime == nome);
+            var time = await _repo.BuscaTimePorNome(nome);
 
             if (time != null)
             {
-                _context.Remove(time);
-                _context.SaveChanges();
-                return Ok(_context.Times);
+                _repo.Delete(time);
+                await _repo.SaveChangeAsync();
+                return Ok(await _repo.BuscaTimes());
             }
 
             return BadRequest("Time não encontrado!");
