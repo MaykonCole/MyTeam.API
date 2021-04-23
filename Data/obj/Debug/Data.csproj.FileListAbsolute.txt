@@ -170,3 +170,4 @@ C:\Users\DevDesiger\source\repos\MyTeam\Data\obj\Debug\Data.csproj.CoreCompileIn
 C:\Users\DevDesiger\source\repos\MyTeam\Data\obj\Debug\Data.csproj.CopyComplete
 C:\Users\DevDesiger\source\repos\MyTeam\Data\obj\Debug\Data.dll
 C:\Users\DevDesiger\source\repos\MyTeam\Data\obj\Debug\Data.pdb
+C:\Users\DevDesiger\source\repos\MyTeam\Data\bin\Debug\Dominio.dll.config

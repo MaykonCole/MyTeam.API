@@ -147,6 +147,10 @@
     <Compile Include="Migrations\20210421001153_MigracaoComCargaInicial.designer.cs">
       <DependentUpon>20210421001153_MigracaoComCargaInicial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210422212459_MigracaoComMaisCampos.cs" />
+    <Compile Include="Migrations\20210422212459_MigracaoComMaisCampos.designer.cs">
+      <DependentUpon>20210422212459_MigracaoComMaisCampos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DataContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

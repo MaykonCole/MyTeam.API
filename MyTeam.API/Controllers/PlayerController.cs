@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Data.Context;
+using Dominio.Dtos;
 using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,16 +22,24 @@ namespace MyTeam.API.Controllers
      //   private readonly DataContext _context;
 
         private readonly IRepository _repo;
-        public PlayerController( IRepository repo)
+        private readonly IMapper _mapper;
+        public PlayerController( IRepository repo, IMapper mapper)
         {
-           
             _repo = repo;
+            _mapper = mapper;
+
         }
         // GET: api/<PlayerController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _repo.BuscaPlayers());
+            var players = await _repo.BuscaPlayers(false);
+
+           var playersdto = _mapper.Map<IEnumerable<PlayerDto>>(players);
+
+
+
+                return Ok(playersdto);
         }
 
         [HttpGet("{id:int}")]
@@ -39,7 +49,10 @@ namespace MyTeam.API.Controllers
 
             if (player == null) return BadRequest("Player com ID " + id + " não localizado.");
 
-            return Ok(player);
+
+            var playerDto = _mapper.Map<PlayerDto>(player);
+
+            return Ok(playerDto);
         }
 
         [HttpGet("pornome/{nome}")]
@@ -49,7 +62,9 @@ namespace MyTeam.API.Controllers
 
             if (player == null) return BadRequest("Player " + nome + " não localizado.");
 
-            return Ok(player);
+            var playerDto = _mapper.Map<PlayerDto>(player);
+
+            return Ok(playerDto);
         }
 
         [HttpGet("porpsn/{nome}")]
@@ -59,7 +74,9 @@ namespace MyTeam.API.Controllers
 
             if (player == null) return BadRequest("PSN " + nome + " não localizado.");
 
-            return Ok(player);
+            var playerDto = _mapper.Map<PlayerDto>(player);
+
+            return Ok(playerDto);
         }
 
         [HttpGet("{nome}")]
@@ -69,7 +86,9 @@ namespace MyTeam.API.Controllers
 
             if (player == null) return BadRequest("Player " + nome + " não localizado.");
 
-            return Ok(player);
+            var playerDto = _mapper.Map<PlayerDto>(player);
+
+            return Ok(playerDto);
         }
 
         [HttpPost]
@@ -88,7 +107,7 @@ namespace MyTeam.API.Controllers
                     {
                         _repo.Add(player);
                        await _repo.SaveChangeAsync();
-                        return Ok(player);
+                        return Created($"/api/player/{player.Id}", player);
                     }
                     else
                     {
@@ -106,17 +125,35 @@ namespace MyTeam.API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, Player player)
         {
-
             var validaplayer = await _repo.BuscaPlayerPorId(id);
 
             if (validaplayer != null)
             {
-                _repo.Update(player);
-               await _repo.SaveChangeAsync();
-                return Ok(await _repo.BuscaPlayers());
+                var validaNome = await _repo.BuscaPlayerNome(player.Nome);
+
+                if (validaNome == null)
+                {
+                    var validaPsn = await _repo.BuscaPlayerPorPsn(player.Psn);
+
+                    if (validaPsn == null)
+                    {
+                        _repo.Update(player);
+                        await _repo.SaveChangeAsync();
+                        return Created($"/api/player/{player.Id}", player);
+                    }
+                    else
+                    {
+                        return Ok("Player já existe com esta PSN.");
+                    }
+                }
+                else
+                {
+                    return Ok("Player já existe com este nome.");
+                }
             }
 
             return BadRequest("Player não encontrado!");
+
         }
 
         [HttpPatch("{id}")]
@@ -127,9 +164,27 @@ namespace MyTeam.API.Controllers
 
             if (validaplayer != null)
             {
-                _repo.Update(player);
-                await _repo.SaveChangeAsync();
-                return Ok(await _repo.BuscaPlayers());
+                var validaNome = await _repo.BuscaPlayerNome(player.Nome);
+
+                if (validaNome == null)
+                {
+                    var validaPsn = await _repo.BuscaPlayerPorPsn(player.Psn);
+
+                    if (validaPsn == null)
+                    {
+                        _repo.Update(player);
+                        await _repo.SaveChangeAsync();
+                        return Created($"/api/player/{player.Id}", player);
+                    }
+                    else
+                    {
+                        return Ok("Player já existe com esta PSN.");
+                    }
+                }
+                else
+                {
+                    return Ok("Player já existe com este nome.");
+                }
             }
 
             return BadRequest("Player não encontrado!");

@@ -12,14 +12,19 @@ namespace Dominio.Models
         {
         }
 
-        public Posicao(int id, string nomePosicao)
+        public Posicao(int id, string nomePosicao, string nomeAbreviado, bool ativo)
         {
             Id = id;
             NomePosicao = nomePosicao;
+            NomePosicao = nomeAbreviado;
+            PosicaoAtiva = ativo;
         }
 
         public int Id { get; set; }
         public string NomePosicao { get; set; }
+        public string NomeAbreviado { get; set; }
+        public bool PosicaoAtiva { get; set; } 
+
         public IEnumerable<PlayerPosicao> PlayerPosicoes { get; set; }
 
     }

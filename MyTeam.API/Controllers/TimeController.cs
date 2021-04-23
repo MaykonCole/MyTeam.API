@@ -25,7 +25,7 @@ namespace MyTeam.API.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _repo.BuscaTimes());
+            return Ok(await _repo.BuscaTimes(true));
         }
 
         [HttpGet("{id:int}")]

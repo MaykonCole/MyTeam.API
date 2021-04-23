@@ -68,30 +68,30 @@ namespace Data.Context
         {
             IQueryable<Player> query = _context.Players;
 
-            query = query.AsNoTracking().OrderBy(p => p.Nome);
+            query = query.AsNoTracking().OrderBy(p => p.Id).Where(p => p.Id == id);
 
-            return await query.FirstOrDefaultAsync(p => p.Id == id);
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<Player> BuscaPlayerPorPsn(string psn)
         {
             IQueryable<Player> query = _context.Players;
 
-            query = query.AsNoTracking().Where(p => p.Psn.Equals(psn));
+            query = query.AsNoTracking().OrderBy(a => a.Psn).Where(p => p.Psn.Equals(psn));
 
-            return await query.FirstOrDefaultAsync(p => p.Psn == psn);
+            return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Time>> BuscaTimes(bool incluirTime = false)
+        public async Task<IEnumerable<Time>> BuscaTimes(bool incluirJogadores = false)
         {
             IQueryable<Time> query = _context.Times;
 
             query = query.AsNoTracking().OrderBy(u => u.NomeTime);
 
-            if (incluirTime)
+            if (incluirJogadores)
             {
                 //Retorna Usuarios e os dados do seus respectivo Clube
-                query = query.AsNoTracking().OrderBy(u => u.NomeTime);
+                query = query.AsNoTracking().OrderBy(u => u.NomeTime).Include(h => h.Players);
             }
 
             return await query.ToArrayAsync();
@@ -101,27 +101,27 @@ namespace Data.Context
         {
             IQueryable<Time> query = _context.Times;
 
-            query = query.AsNoTracking().OrderBy(u => u.NomeTime);
+            query = query.AsNoTracking().OrderBy(u => u.NomeTime).Where(h => h.Id == id);
 
-            return await query.FirstOrDefaultAsync(h => h.Id == id);
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<Time> BuscaTimePorNome(string nome)
         {
             IQueryable<Time> query = _context.Times;
 
-            query = query.AsNoTracking().Where(u => u.NomeTime.Equals(nome));
+            query = query.AsNoTracking().OrderBy(u => u.NomeTime).Where(u => u.NomeTime.Equals(nome));
 
-            return await query.FirstOrDefaultAsync(u => u.NomeTime == nome);
+            return await query.FirstOrDefaultAsync();
         }
 
         public async Task<Time> BuscaTimePorEscudo(string escudo)
         {
             IQueryable<Time> query = _context.Times;
 
-            query = query.AsNoTracking().Where(u => u.LinkEscudo.Equals(escudo));
+            query = query.AsNoTracking().OrderBy(a => a.LinkEscudo).Where(u => u.LinkEscudo.Equals(escudo));
 
-            return await query.FirstOrDefaultAsync(u => u.NomeTime == escudo);
+            return await query.FirstOrDefaultAsync();
         }
 
 

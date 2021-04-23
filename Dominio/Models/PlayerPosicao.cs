@@ -17,6 +17,7 @@ namespace Dominio.Models
             PosicaoId = posicaoId;
         }
 
+        public DateTime DataCadastro { get; set; } = DateTime.Now;
         public int PlayerId { get; set; }
         public Player Player { get; set; }
 

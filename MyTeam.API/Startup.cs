@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using AutoMapper;
 
 namespace MyTeam.API
 {
@@ -26,30 +26,18 @@ namespace MyTeam.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
-
-            //    services.AddControllers().AddNewtonsoftJson(options =>
-            //options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-
-
-            //Singleton cria uma única instância do serviço quando é solicitado pela 1° vez e reutilza essa mesma instância em todos os locais necessários.
-
-
-            //Transient sempre gerará uma nova instância para cada item encontrada que possua tal dependência, ou seja, se houver 5 dependências serão 5 instâncias diferentes.
-
-            //Scoped garante que em uma requisicao seja criada uma instância de uma classe, se houver outras depepndências, será utilizada esta única instância para todas.
-            // Sendo renovada somente nas requisições subsequentes, mas, mantendo esta regra.
-
-            //        services.AddControllersWithViews()
-            //.AddNewtonsoftJson(options =>
-            //options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-
-            services.AddControllers().AddNewtonsoftJson(options =>
-    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
-            services.AddScoped<IRepository, Repository>();
 
             services.AddDbContext<DataContext>(
                 context => context.UseSqlServer(Configuration.GetConnectionString("StringConexao")));
+
+            services.AddControllers().AddNewtonsoftJson(options =>
+            options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
+           
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            services.AddScoped<IRepository, Repository>();
+         
 
             services.AddControllers();
         }

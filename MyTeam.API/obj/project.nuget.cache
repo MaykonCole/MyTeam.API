@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "RAkpvjN+/A/2X2Btw5aq63AblglOI53U6zo3+AL4dd29QPJMaY02VPvtqk7r1FRXga0u6+PsFdji5R0NSX8w2A==",
+  "dgSpecHash": "Gc7TyoUo9A9tY833Zf+OPDstibu681xdNr+/B15OyBSYzburD2AC6xSKwFaP61PpVWoWhJv1J0xsh4EnZyeJPw==",
   "success": true,
   "projectFilePath": "C:\\Users\\DevDesiger\\source\\repos\\MyTeam\\MyTeam.API\\MyTeam.API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\DevDesiger\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\DevDesiger\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.0\\microsoft.aspnetcore.jsonpatch.3.1.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.0.nupkg.sha512",
@@ -116,7 +118,7 @@
     "C:\\Users\\DevDesiger\\.nuget\\packages\\system.objectmodel\\4.3.0\\system.objectmodel.4.3.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\system.private.datacontractserialization\\4.3.0\\system.private.datacontractserialization.4.3.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\DevDesiger\\.nuget\\packages\\system.reflection.emit\\4.3.0\\system.reflection.emit.4.3.0.nupkg.sha512",
+    "C:\\Users\\DevDesiger\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\system.reflection.emit.ilgeneration\\4.3.0\\system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\system.reflection.emit.lightweight\\4.3.0\\system.reflection.emit.lightweight.4.3.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\system.reflection.extensions\\4.3.0\\system.reflection.extensions.4.3.0.nupkg.sha512",

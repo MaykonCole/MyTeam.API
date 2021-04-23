@@ -118,5 +118,8 @@ C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Micro
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Data.pdb
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Data.dll.config
+C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Dominio.dll.config
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.csproj.CoreCompileInputs.cache
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.MvcApplicationPartsAssemblyInfo.cache
