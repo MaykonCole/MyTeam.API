@@ -15,7 +15,7 @@ namespace Dominio.Dtos
 
         public int Idade { get; set; }
      //   public IEnumerable<PlayerPosicao> PlayerPosicoes { get; set; }
-        public string? PerfilPlayer { get; set; }
+        public string PerfilPlayer { get; set; }
         public int? TimeId { get; set; }
         public Time Time { get; set; }
     }

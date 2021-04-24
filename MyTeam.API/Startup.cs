@@ -11,6 +11,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AutoMapper;
+using System.Reflection;
+using System.IO;
 
 namespace MyTeam.API
 {
@@ -37,7 +39,38 @@ namespace MyTeam.API
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IRepository, Repository>();
-         
+
+            services.AddSwaggerGen(options => {
+
+                options.SwaggerDoc("MyTeam.API", new Microsoft.OpenApi.Models.OpenApiInfo()
+                {
+                    Title = "MyTeam API",
+                    Version = "1.0",
+                    TermsOfService = new Uri("https://www.instagram.com/maykoncole/"),
+                    Description = "WEB API crida para utilização do aplicativo mobile My Team",
+
+                    License = new Microsoft.OpenApi.Models.OpenApiLicense
+                    {
+                        Name = "MyTeam - Licença",
+                        Url = new Uri("https://github.com/MaykonCole")
+                    },
+                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                    {
+                        Name = "Maykon Emanuel Cardoso Rocha",
+                        Email = "maykontaio@hotmail.com",
+                        Url = new Uri("https://twitter.com/Maykon_Cole")
+                    }
+
+                }
+                );
+
+                var xmlComentario = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlCaminho = Path.Combine(AppContext.BaseDirectory, xmlComentario);
+
+                options.IncludeXmlComments(xmlCaminho);
+
+            });
+
 
             services.AddControllers();
         }
@@ -51,6 +84,12 @@ namespace MyTeam.API
             }
 
             app.UseRouting();
+
+            app.UseSwagger().UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/MyTeam.API/swagger.json", "MyTeam API");
+                options.RoutePrefix = "";
+            });
 
             app.UseAuthorization();
 

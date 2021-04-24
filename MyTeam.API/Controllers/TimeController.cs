@@ -10,17 +10,30 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MyTeam.API.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class TimeController : ControllerBase
     {
-        //private readonly DataContext _context;
+      
         private readonly IRepository _repo;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="repo"></param>
         public TimeController( IRepository repo)
         {
            
             _repo = repo;
         }
+
+        /// <summary>
+        /// Método responsável para retornar todos os Times.
+        /// </summary>
+        /// <returns></returns>
 
         [HttpGet]
         public async Task<IActionResult> Get()
@@ -28,6 +41,11 @@ namespace MyTeam.API.Controllers
             return Ok(await _repo.BuscaTimes(true));
         }
 
+        /// <summary>
+        /// Método responsavel por retornar apenas um único Time, de acordo o seu ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetPorId(int id)
         {
@@ -38,18 +56,14 @@ namespace MyTeam.API.Controllers
             return Ok(time);
         }
 
-        [HttpGet("pornome")]
-        async Task<IActionResult>  GetPorNomeQueryString(string nome)
-        {
-            var time = await _repo.BuscaTimePorNome(nome);
 
-            if (time == null) return BadRequest("Time com Nome " + nome + " não localizado.");
-
-            return Ok(time);
-        }
-
+        /// <summary>
+        /// Método responsavel por retornar apenas um único Time, de acordo o seu Nome.
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
         [HttpGet("{nome}")]
-        async Task<IActionResult> GetPorNome(string nome)
+        public async Task<IActionResult> GetPorNome(string nome)
         {
             var time = await _repo.BuscaTimePorNome(nome);
 
@@ -58,8 +72,13 @@ namespace MyTeam.API.Controllers
             return Ok(time);
         }
 
+        /// <summary>
+        /// Método responsavel por adicionar um novo Time.
+        /// </summary>
+        /// <param name="time"></param>
+        /// <returns></returns>
         [HttpPost]
-        async Task<IActionResult> Post(Time time)
+        public async Task<IActionResult> Post(Time time)
         {
             if (time != null)
             {
@@ -89,8 +108,14 @@ namespace MyTeam.API.Controllers
 
         }
 
+        /// <summary>
+        /// Método responsavel por excluir um Time, de acordo o seu ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="time"></param>
+        /// <returns></returns>
         [HttpPut("{id}")]
-        async Task<IActionResult> Put(int id, Time time)
+        public async Task<IActionResult> Put(int id, Time time)
         {
             var validatime = await _repo.BuscaTimePorId(id);
 
@@ -105,8 +130,14 @@ namespace MyTeam.API.Controllers
 
         }
 
+        /// <summary>
+        /// Método responsavel por atualizar um Time, de acordo o seu ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="time"></param>
+        /// <returns></returns>
         [HttpPatch("{id}")]
-        async Task<IActionResult> Patch(int id, Time time)
+        public async Task<IActionResult> Patch(int id, Time time)
         {
 
             var validatime = await _repo.BuscaTimePorId(id);
@@ -121,8 +152,13 @@ namespace MyTeam.API.Controllers
             return BadRequest("Timer não encontrado!");
         }
 
+        /// <summary>
+        /// Método responsavel por excluir um Time, de acordo o seu ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpDelete("excluirtimeporid/{id}")]
-        async Task<IActionResult> DeletePorId(int id)
+        public async Task<IActionResult> DeletePorId(int id)
         {
              var time = await _repo.BuscaTimePorId(id);
 
@@ -136,8 +172,13 @@ namespace MyTeam.API.Controllers
             return BadRequest("Time não encontrado!");
         }
 
+        /// <summary>
+        /// Método responsavel por excluir um Time, de acordo o seu Nome.
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
         [HttpDelete("excluirtimepornome/{nome}")]
-        async Task<IActionResult> DeletePorNome(string nome)
+        public async Task<IActionResult> DeletePorNome(string nome)
         {
             var time = await _repo.BuscaTimePorNome(nome);
 
@@ -150,7 +191,6 @@ namespace MyTeam.API.Controllers
 
             return BadRequest("Time não encontrado!");
         }
-
 
     }
 }

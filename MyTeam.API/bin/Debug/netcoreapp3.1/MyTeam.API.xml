@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MyTeam.API</name>
+    </assembly>
+    <members>
+        <member name="T:MyTeam.API.Controllers.PlayerController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.#ctor(Data.Context.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.Get">
+            <summary>
+            Método responsável para retornar todos os Jogadores!
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.GetPorId(System.Int32)">
+            <summary>
+            Método responsavel por retornar apenas um único Player, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.GetPorNomeQueryString(System.String)">
+            <summary>
+            Método responsavel por retornar apenas um único Player, de acordo o seu Nome.
+            </summary>
+            <param name="nome"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.GetPorPsnQueryString(System.String)">
+            <summary>
+            Método responsavel por retornar apenas um único Player, de acordo a sua PSN.
+            </summary>
+            <param name="psn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.Post(Dominio.Models.Player)">
+            <summary>
+            Método responsavel por adicionar um novo Player.
+            </summary>
+            <param name="player"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.Put(System.Int32,Dominio.Models.Player)">
+            <summary>
+            Método responsavel por atualizar um Player, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <param name="player"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.Patch(System.Int32,Dominio.Models.Player)">
+            <summary>
+            Método responsavel por atualizar um Player, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <param name="player"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.DeletePorId(System.Int32)">
+            <summary>
+            Método responsavel por excluir um Player, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.PlayerController.DeletePorNome(System.String)">
+            <summary>
+            Método responsavel por excluir um Player, de acordo o seu Nome.
+            </summary>
+            <param name="nome"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyTeam.API.Controllers.TimeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:MyTeam.API.Controllers.TimeController.#ctor(Data.Context.IRepository)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+        </member>
+        <member name="M:MyTeam.API.Controllers.TimeController.Get">
+            <summary>
+            Método responsável para retornar todos os Times.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.TimeController.GetPorId(System.Int32)">
+            <summary>
+            Método responsavel por retornar apenas um único Time, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.TimeController.GetPorNome(System.String)">
+            <summary>
+            Método responsavel por retornar apenas um único Time, de acordo o seu Nome.
+            </summary>
+            <param name="nome"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.TimeController.Post(Dominio.Models.Time)">
+            <summary>
+            Método responsavel por adicionar um novo Time.
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.TimeController.Put(System.Int32,Dominio.Models.Time)">
+            <summary>
+            Método responsavel por excluir um Time, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.TimeController.Patch(System.Int32,Dominio.Models.Time)">
+            <summary>
+            Método responsavel por atualizar um Time, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.TimeController.DeletePorId(System.Int32)">
+            <summary>
+            Método responsavel por excluir um Time, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.Controllers.TimeController.DeletePorNome(System.String)">
+            <summary>
+            Método responsavel por excluir um Time, de acordo o seu Nome.
+            </summary>
+            <param name="nome"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

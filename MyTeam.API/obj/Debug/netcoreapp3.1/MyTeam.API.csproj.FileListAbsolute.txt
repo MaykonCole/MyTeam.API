@@ -121,5 +121,11 @@ C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Data.
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\AutoMapper.dll
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Dominio.dll.config
+C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.csproj.CoreCompileInputs.cache
+C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\bin\Debug\netcoreapp3.1\MyTeam.API.xml

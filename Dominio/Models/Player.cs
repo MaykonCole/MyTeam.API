@@ -35,7 +35,7 @@ namespace Dominio.Models
         public DateTime? DataAtualizacao { get; set; }
         public DateTime DataNascimento { get; set; }
 
-        public string? PerfilPlayer { get; set; }
+        public string PerfilPlayer { get; set; }
         public bool? PlayerAtivo { get; set; }
         public int? TimeId { get; set; }
         public Time Time { get; set; }
