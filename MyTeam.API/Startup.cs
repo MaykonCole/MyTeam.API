@@ -13,6 +13,7 @@ using Microsoft.Extensions.Hosting;
 using AutoMapper;
 using System.Reflection;
 using System.IO;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 
 namespace MyTeam.API
 {
@@ -40,29 +41,56 @@ namespace MyTeam.API
 
             services.AddScoped<IRepository, Repository>();
 
+
+            // Configuracao de Versionamento da API
+            services.AddVersionedApiExplorer(options =>
+            {
+                options.GroupNameFormat = "'v'VVV";
+                options.SubstituteApiVersionInUrl = true;
+
+            })
+            .AddApiVersioning(opcao =>
+            {
+                opcao.AssumeDefaultVersionWhenUnspecified = true;
+                opcao.DefaultApiVersion = new ApiVersion(1, 0);
+                opcao.ReportApiVersions = true;
+            }
+            );
+
+            var apiProviderDescription = services.BuildServiceProvider()
+                                                  .GetService<IApiVersionDescriptionProvider>();
+            
+
+            // COnfiguaração das propriedades do Swagger
             services.AddSwaggerGen(options => {
 
-                options.SwaggerDoc("MyTeam.API", new Microsoft.OpenApi.Models.OpenApiInfo()
-                {
-                    Title = "MyTeam API",
-                    Version = "1.0",
-                    TermsOfService = new Uri("https://www.instagram.com/maykoncole/"),
-                    Description = "WEB API crida para utilização do aplicativo mobile My Team",
 
-                    License = new Microsoft.OpenApi.Models.OpenApiLicense
+
+                foreach (var descricao in apiProviderDescription.ApiVersionDescriptions)
+                {
+                    options.SwaggerDoc(descricao.GroupName, new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
-                        Name = "MyTeam - Licença",
-                        Url = new Uri("https://github.com/MaykonCole")
-                    },
-                    Contact = new Microsoft.OpenApi.Models.OpenApiContact
-                    {
-                        Name = "Maykon Emanuel Cardoso Rocha",
-                        Email = "maykontaio@hotmail.com",
-                        Url = new Uri("https://twitter.com/Maykon_Cole")
+                        Title = "MyTeam API",
+                        Version = descricao.ApiVersion.ToString(),
+                        TermsOfService = new Uri("https://www.instagram.com/maykoncole/"),
+                        Description = "WEB API crida para utilização do aplicativo mobile My Team",
+
+                        License = new Microsoft.OpenApi.Models.OpenApiLicense
+                        {
+                            Name = "MyTeam - Licença",
+                            Url = new Uri("https://github.com/MaykonCole")
+                        },
+                        Contact = new Microsoft.OpenApi.Models.OpenApiContact
+                        {
+                            Name = "Maykon Emanuel Cardoso Rocha",
+                            Email = "maykontaio@hotmail.com",
+                            Url = new Uri("https://twitter.com/Maykon_Cole")
+                        }
+
                     }
 
-                }
                 );
+                }
 
                 var xmlComentario = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlCaminho = Path.Combine(AppContext.BaseDirectory, xmlComentario);
@@ -76,7 +104,7 @@ namespace MyTeam.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IApiVersionDescriptionProvider apiVersionProvider)
         {
             if (env.IsDevelopment())
             {
@@ -87,7 +115,12 @@ namespace MyTeam.API
 
             app.UseSwagger().UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/MyTeam.API/swagger.json", "MyTeam API");
+                foreach (var descricao in apiVersionProvider.ApiVersionDescriptions)
+                {
+                    options.SwaggerEndpoint($"/swagger/{descricao.GroupName}/swagger.json",
+                         descricao.GroupName.ToUpperInvariant());
+                }
+                
                 options.RoutePrefix = "";
             });
 

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "lh02tkMBlhR5QZ2i0C+HGF3BBN0OaSf1BMaAHr2IWxdSkqgYTynyrBWdKzeL96zzQ2P8L9fTcP12gJ97/069Tg==",
+  "dgSpecHash": "yMwqUphuZ8kkIz3i9+OqM68uL97cODVAdcfxEvLXeDaqyHzG0u/CkCjV0xb6gbgdot85qs/fbTNPcBegtPOlkw==",
   "success": true,
   "projectFilePath": "C:\\Users\\DevDesiger\\source\\repos\\MyTeam\\MyTeam.API\\MyTeam.API.csproj",
   "expectedPackageFiles": [
@@ -9,6 +9,8 @@
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.html.abstractions\\2.2.0\\microsoft.aspnetcore.html.abstractions.2.2.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\3.1.0\\microsoft.aspnetcore.jsonpatch.3.1.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\3.1.0\\microsoft.aspnetcore.mvc.newtonsoftjson.3.1.0.nupkg.sha512",
+    "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning\\5.0.0\\microsoft.aspnetcore.mvc.versioning.5.0.0.nupkg.sha512",
+    "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.mvc.versioning.apiexplorer\\5.0.0\\microsoft.aspnetcore.mvc.versioning.apiexplorer.5.0.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.razor\\2.2.0\\microsoft.aspnetcore.razor.2.2.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.razor.language\\3.1.0\\microsoft.aspnetcore.razor.language.3.1.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.aspnetcore.razor.runtime\\2.2.0\\microsoft.aspnetcore.razor.runtime.2.2.0.nupkg.sha512",
