@@ -119,4 +119,3 @@ C:\Users\DevDesiger\source\repos\MyTeam\Dominio\bin\Debug\System.Buffers.xml
 C:\Users\DevDesiger\source\repos\MyTeam\Dominio\bin\Debug\System.Memory.xml
 C:\Users\DevDesiger\source\repos\MyTeam\Dominio\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\DevDesiger\source\repos\MyTeam\Dominio\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
-C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache

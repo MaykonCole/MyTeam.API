@@ -12,12 +12,12 @@ using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace MyTeam.API.Controllers
+namespace MyTeam.API.V1.Controllers
 {
     /// <summary>
-    /// 
+    /// Versao 1 do controlador de Players
     /// </summary>
-   
+
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
 
