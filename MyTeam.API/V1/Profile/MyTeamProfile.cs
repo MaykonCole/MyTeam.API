@@ -1,7 +1,8 @@
 ﻿using AutoMapper;
 using Dominio.Dtos;
 using Dominio.Models;
-using MyTeam.API.Helpers;
+using Data.Helpers;
+
 
 namespace Dominio.Helpers
 {
@@ -13,7 +14,6 @@ namespace Dominio.Helpers
                 .ForMember(
                 dest => dest.Idade,
                 opt => opt.MapFrom(src => src.DataNascimento.PegarIdadeAtual())
-
                 );
                 
         }

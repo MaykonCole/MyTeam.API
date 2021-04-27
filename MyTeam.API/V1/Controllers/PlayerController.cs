@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Data.Context;
+using Data.Helpers;
 using Dominio.Dtos;
 using Dominio.Models;
 using Microsoft.AspNetCore.Http;
@@ -47,9 +48,9 @@ namespace MyTeam.API.V1.Controllers
         /// <returns></returns>
         // GET: api/<PlayerController>
         [HttpGet]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get([FromQuery]PageParams pageParams)
         {
-            var players = await _repo.BuscaPlayers(false);
+            var players = await _repo.BuscaPlayers(pageParams, false);
 
            var playersdto = _mapper.Map<IEnumerable<PlayerDto>>(players);
 
@@ -244,7 +245,7 @@ namespace MyTeam.API.V1.Controllers
             {
                 _repo.Delete(player);
                 await _repo.SaveChangeAsync();
-                return Ok(await _repo.BuscaPlayers());
+                return Ok(player);
             }
 
             return BadRequest("Player não encontrado!");
@@ -266,7 +267,7 @@ namespace MyTeam.API.V1.Controllers
             {
                 _repo.Delete(player);
                 await _repo.SaveChangeAsync();
-                return Ok(await _repo.BuscaPlayers());
+                return Ok(player);
             }
 
             return BadRequest("Player não encontrado!");

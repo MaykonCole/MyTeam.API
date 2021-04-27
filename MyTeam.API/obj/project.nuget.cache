@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yMwqUphuZ8kkIz3i9+OqM68uL97cODVAdcfxEvLXeDaqyHzG0u/CkCjV0xb6gbgdot85qs/fbTNPcBegtPOlkw==",
+  "dgSpecHash": "NFkf8xjAkSfo7tCtIjpj1RjaPb1VrROW3sWKJsLkFeLkCLsCl4TNnONVpXp4wRb9Q0K4k9xFyKq8ZsL+mGinhg==",
   "success": true,
   "projectFilePath": "C:\\Users\\DevDesiger\\source\\repos\\MyTeam\\MyTeam.API\\MyTeam.API.csproj",
   "expectedPackageFiles": [
@@ -58,7 +58,7 @@
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\netstandard.library\\1.6.1\\netstandard.library.1.6.1.nupkg.sha512",
-    "C:\\Users\\DevDesiger\\.nuget\\packages\\newtonsoft.json\\12.0.2\\newtonsoft.json.12.0.2.nupkg.sha512",
+    "C:\\Users\\DevDesiger\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\newtonsoft.json.bson\\1.0.2\\newtonsoft.json.bson.1.0.2.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\nuget.frameworks\\4.7.0\\nuget.frameworks.4.7.0.nupkg.sha512",
     "C:\\Users\\DevDesiger\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",

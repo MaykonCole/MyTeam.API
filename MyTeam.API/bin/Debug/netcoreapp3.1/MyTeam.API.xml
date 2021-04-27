@@ -4,9 +4,34 @@
         <name>MyTeam.API</name>
     </assembly>
     <members>
-        <member name="T:MyTeam.API.V1.Controllers.PlayerController">
+        <member name="T:MyTeam.API.V1.Controllers.PlayerAppController">
+            <summary>
+            Versao 1 do controlador de Players
+            </summary>
+        </member>
+        <member name="M:MyTeam.API.V1.Controllers.PlayerAppController.#ctor(Data.Context.IRepository,AutoMapper.IMapper)">
             <summary>
             
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:MyTeam.API.V1.Controllers.PlayerAppController.Get">
+            <summary>
+            Método responsável para retornar todos os Jogadores!
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.V1.Controllers.PlayerAppController.Post(Dominio.Models.PlayerApp)">
+            <summary>
+            Método responsavel por adicionar um novo Player.
+            </summary>
+            <param name="player"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyTeam.API.V1.Controllers.PlayerController">
+            <summary>
+            Versao 1 do controlador de Players
             </summary>
         </member>
         <member name="M:MyTeam.API.V1.Controllers.PlayerController.#ctor(Data.Context.IRepository,AutoMapper.IMapper)">
@@ -16,7 +41,7 @@
             <param name="repo"></param>
             <param name="mapper"></param>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.PlayerController.Get">
+        <member name="M:MyTeam.API.V1.Controllers.PlayerController.Get(Data.Helpers.PageParams)">
             <summary>
             Método responsável para retornar todos os Jogadores!
             </summary>
@@ -82,7 +107,7 @@
         </member>
         <member name="T:MyTeam.API.V2.Controllers.TimeController">
             <summary>
-            
+            Versao 2 do controlador de Times
             </summary>
         </member>
         <member name="M:MyTeam.API.V2.Controllers.TimeController.#ctor(Data.Context.IRepository)">

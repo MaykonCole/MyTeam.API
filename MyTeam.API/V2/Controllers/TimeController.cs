@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace MyTeam.API.V2.Controllers
 {
     /// <summary>
-    /// 
+    /// Versao 2 do controlador de Times
     /// </summary>
 
     [ApiVersion("2.0")]
