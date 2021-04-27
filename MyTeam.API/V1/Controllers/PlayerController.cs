@@ -54,7 +54,7 @@ namespace MyTeam.API.V1.Controllers
 
            var playersdto = _mapper.Map<IEnumerable<PlayerDto>>(players);
 
-
+            Response.AddPagination(players.AtualPagina, players.TamanhoPagina, players.ItemTotal, players.TotalPaginas);
 
                 return Ok(playersdto);
         }
