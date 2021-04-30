@@ -24,8 +24,6 @@ namespace MyTeam.API.V1.Controllers
     [ApiController]
     public class PlayerAppController : ControllerBase
     {
-
-  
         private readonly IRepository _repo;
         private readonly IMapper _mapper;
 
@@ -67,7 +65,10 @@ namespace MyTeam.API.V1.Controllers
         public async Task<IActionResult> Post(PlayerApp player)
         {
             if (player != null)
-            { 
+            {
+                        player.Nome = player.Nome.ToLower();
+                        player.Psn = player.Psn.ToLower();
+                         player.Posicao = player.Posicao.ToLower();
                         _repo.Add(player);
                         await _repo.SaveChangeAsync();
                         return Ok(player.Nome + " cadastrado com sucesso.");
@@ -76,9 +77,94 @@ namespace MyTeam.API.V1.Controllers
             return BadRequest("Player invalido!");
         }
 
+
+        /// <summary>
+        /// Método responsavel por atualizar um Player, de acordo o seu ID.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="player"></param>
+        /// <returns></returns>
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id, PlayerApp player)
+        {
+            var validaplayer = await _repo.BuscaPlayerAppPorId(id);
+
+            if (validaplayer != null)
+            {
+                var validaNome = await _repo.BuscaPlayerAppNome(player.Nome);
+
+                if (validaNome == null || validaplayer.Nome == player.Nome)
+                {
+                    var validaPsn = await _repo.BuscaPlayerAppPorPsn(player.Psn);
+
+                    if (validaPsn == null || validaplayer.Psn == player.Psn)
+                    {
+                        _repo.Update(player);
+                        await _repo.SaveChangeAsync();
+                        return Created($"/api/player/{player.Id}", player);
+                    }
+                    else
+                    {
+                        return Ok("Player já existe com esta PSN.");
+                    }
+                }
+                else
+                {
+                    return Ok("Player já existe com este nome.");
+                }
+            }
+
+            return BadRequest("Player não encontrado!");
+
+        }
+
+        ///// <summary>
+        ///// Método responsavel por excluir um Player, de acordo o seu ID.
+        ///// </summary>
+        ///// <param name="id"></param>
+        ///// <returns></returns>
+        [HttpDelete("excluirplayerporid/{id}")]
+        public async Task<IActionResult> DeletePorId(int id)
+        {
+            var player = await _repo.BuscaPlayerAppPorId(id);
+
+
+            if (player != null)
+            {
+                _repo.Delete(player);
+                await _repo.SaveChangeAsync();
+                return Ok(await _repo.BuscaPlayersApp());
+            }
+
+            return BadRequest("Player não encontrado!");
+
+        }
+
+        /////// <summary>
+        /////// Método responsavel por excluir um Player, de acordo o seu Nome.
+        /////// </summary>
+        /////// <param name="nome"></param>
+        /////// <returns></returns>
+        //[HttpDelete("excluirplayerpornome/{nome}")]
+        //public async Task<IActionResult> DeletePorNome(string nome)
+        //{
+
+        //    var player = await _repo.BuscaPlayerAppNome(nome);
+
+        //    if (player != null)
+        //    {
+        //        _repo.Delete(player);
+        //        await _repo.SaveChangeAsync();
+        //        return Ok(await _repo.BuscaPlayersApp());
+        //    }
+
+        //    return BadRequest("Player não encontrado!");
+        //}
+
         /// <summary>
         /// Método responsavel por retornar apenas um único Player, de acordo o seu ID.
         /// </summary>
+        /// <param name="nome"></param>
         /// <param name="id"></param>
         /// <returns></returns>
         //[HttpGet("{id:int}")]
@@ -133,45 +219,7 @@ namespace MyTeam.API.V1.Controllers
 
 
 
-        /// <summary>
-        /// Método responsavel por atualizar um Player, de acordo o seu ID.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="player"></param>
-        /// <returns></returns>
-        //[HttpPut("{id}")]
-        //public async Task<IActionResult> Put(int id, Player player)
-        //{
-        //    var validaplayer = await _repo.BuscaPlayerPorId(id);
 
-        //    if (validaplayer != null)
-        //    {
-        //        var validaNome = await _repo.BuscaPlayerNome(player.Nome);
-
-        //        if (validaNome == null)
-        //        {
-        //            var validaPsn = await _repo.BuscaPlayerPorPsn(player.Psn);
-
-        //            if (validaPsn == null)
-        //            {
-        //                _repo.Update(player);
-        //                await _repo.SaveChangeAsync();
-        //                return Created($"/api/player/{player.Id}", player);
-        //            }
-        //            else
-        //            {
-        //                return Ok("Player já existe com esta PSN.");
-        //            }
-        //        }
-        //        else
-        //        {
-        //            return Ok("Player já existe com este nome.");
-        //        }
-        //    }
-
-        //    return BadRequest("Player não encontrado!");
-
-        //}
 
         /// <summary>
         /// Método responsavel por atualizar um Player, de acordo o seu ID.
@@ -213,48 +261,9 @@ namespace MyTeam.API.V1.Controllers
         //    return BadRequest("Player não encontrado!");
         //}
 
-        ///// <summary>
-        ///// Método responsavel por excluir um Player, de acordo o seu ID.
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns></returns>
-        //[HttpDelete("excluirplayerporid/{id}")]
-        //public async Task<IActionResult> DeletePorId(int id)
-        //{
-        //    var player = await _repo.BuscaPlayerPorId(id);
+       
 
 
-        //    if (player != null)
-        //    {
-        //        _repo.Delete(player);
-        //        await _repo.SaveChangeAsync();
-        //        return Ok(await _repo.BuscaPlayers());
-        //    }
-
-        //    return BadRequest("Player não encontrado!");
-
-        //}
-
-        ///// <summary>
-        ///// Método responsavel por excluir um Player, de acordo o seu Nome.
-        ///// </summary>
-        ///// <param name="nome"></param>
-        ///// <returns></returns>
-        //[HttpDelete("excluirplayerpornome/{nome}")]
-        //public async Task<IActionResult> DeletePorNome(string nome)
-        //{
-
-        //    var player = await _repo.BuscaPlayerNome(nome);
-
-        //    if (player != null)
-        //    {
-        //        _repo.Delete(player);
-        //        await _repo.SaveChangeAsync();
-        //        return Ok(await _repo.BuscaPlayers());
-        //    }
-
-        //    return BadRequest("Player não encontrado!");
-        //}
 
     }
 }

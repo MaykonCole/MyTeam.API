@@ -1,4 +1,5 @@
 ﻿using Dominio.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,7 @@ namespace Dominio.Dtos
 {
     public class PlayerDto
     {
-       // public int Id { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public string Psn { get; set; }
 
@@ -17,6 +18,8 @@ namespace Dominio.Dtos
      //   public IEnumerable<PlayerPosicao> PlayerPosicoes { get; set; }
         public string PerfilPlayer { get; set; }
         public int? TimeId { get; set; }
-        public Time Time { get; set; }
+
+        [JsonIgnore]
+        public Team Time { get; set; }
     }
 }

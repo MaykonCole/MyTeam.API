@@ -29,6 +29,14 @@
             <param name="player"></param>
             <returns></returns>
         </member>
+        <member name="M:MyTeam.API.V1.Controllers.PlayerAppController.Put(System.Int32,Dominio.Models.PlayerApp)">
+            <summary>
+            Método responsavel por atualizar um Player, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <param name="player"></param>
+            <returns></returns>
+        </member>
         <member name="T:MyTeam.API.V1.Controllers.PlayerController">
             <summary>
             Versao 1 do controlador de Players
@@ -105,45 +113,45 @@
             <param name="nome"></param>
             <returns></returns>
         </member>
-        <member name="T:MyTeam.API.V2.Controllers.TimeController">
+        <member name="T:MyTeam.API.V2.Controllers.TeamController">
             <summary>
             Versao 2 do controlador de Times
             </summary>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TimeController.#ctor(Data.Context.IRepository)">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.#ctor(Data.Context.IRepository)">
             <summary>
             
             </summary>
             <param name="repo"></param>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TimeController.Get">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.Get">
             <summary>
             Método responsável para retornar todos os Times.
             </summary>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TimeController.GetPorId(System.Int32)">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.GetPorId(System.Int32)">
             <summary>
             Método responsavel por retornar apenas um único Time, de acordo o seu ID.
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TimeController.GetPorNome(System.String)">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.GetPorNome(System.String)">
             <summary>
             Método responsavel por retornar apenas um único Time, de acordo o seu Nome.
             </summary>
             <param name="nome"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TimeController.Post(Dominio.Models.Time)">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.Post(Dominio.Models.Team)">
             <summary>
             Método responsavel por adicionar um novo Time.
             </summary>
             <param name="time"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TimeController.Put(System.Int32,Dominio.Models.Time)">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.Put(System.Int32,Dominio.Models.Team)">
             <summary>
             Método responsavel por excluir um Time, de acordo o seu ID.
             </summary>
@@ -151,7 +159,7 @@
             <param name="time"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TimeController.Patch(System.Int32,Dominio.Models.Time)">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.Patch(System.Int32,Dominio.Models.Team)">
             <summary>
             Método responsavel por atualizar um Time, de acordo o seu ID.
             </summary>
@@ -159,14 +167,14 @@
             <param name="time"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TimeController.DeletePorId(System.Int32)">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.DeletePorId(System.Int32)">
             <summary>
             Método responsavel por excluir um Time, de acordo o seu ID.
             </summary>
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TimeController.DeletePorNome(System.String)">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.DeletePorNome(System.String)">
             <summary>
             Método responsavel por excluir um Time, de acordo o seu Nome.
             </summary>

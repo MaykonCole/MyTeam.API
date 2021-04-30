@@ -1,4 +1,5 @@
-﻿using Dominio.Models;
+﻿using Data.Helpers;
+using Dominio.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -38,8 +39,56 @@ namespace Data.Context
             return (await _context.SaveChangesAsync()) > 0;
         }
 
-        public async Task<IEnumerable<Player>> BuscaPlayers(bool incluirTime = false)
+
+        public async Task<IEnumerable<PlayerApp>> BuscaPlayersApp(bool incluirTime = false)
         {
+            IQueryable<PlayerApp> query = _context.PlayersApp;
+
+
+            query = query.AsNoTracking().OrderBy(u => u.Nome);
+
+
+            if (incluirTime)
+            {
+                //Retorna Usuarios e os dados do seus respectivo Clube
+               // query = query.AsNoTracking().OrderBy(u => u.Nome).Include(h => h.Time);
+            }
+
+            return await query.ToArrayAsync();
+        }
+
+        public async Task<PlayerApp> BuscaPlayerAppPorId(int id)
+        {
+            IQueryable<PlayerApp> query = _context.PlayersApp;
+
+            query = query.AsNoTracking().OrderBy(p => p.Id).Where(p => p.Id == id);
+
+            return await query.FirstOrDefaultAsync();
+        }
+
+        public async Task<PlayerApp> BuscaPlayerAppNome(string nome)
+        {
+            IQueryable<PlayerApp> query = _context.PlayersApp;
+
+            query = query.AsNoTracking().Where(p => p.Nome.Equals(nome));
+
+            return await query.FirstOrDefaultAsync(p => p.Nome == nome);
+        }
+
+        public async Task<PlayerApp> BuscaPlayerAppPorPsn(string psn)
+        {
+            IQueryable<PlayerApp> query = _context.PlayersApp;
+
+            query = query.AsNoTracking().OrderBy(a => a.Psn).Where(p => p.Psn.Equals(psn));
+
+            return await query.FirstOrDefaultAsync();
+        }
+
+     
+
+        public async Task<PageList<Player>> BuscaPlayers(PageParams pageParams, bool incluirTime = false)
+        {
+            
             IQueryable<Player> query = _context.Players;
 
 
@@ -52,7 +101,25 @@ namespace Data.Context
                 query = query.AsNoTracking().OrderBy(u => u.Nome).Include(h => h.Time);
             }
 
-            return await query.ToArrayAsync();
+            if (!string.IsNullOrEmpty(pageParams.Nome))
+            {
+                query = query.Where(player => player.Nome.ToUpper().Contains(pageParams.Nome.ToUpper()));
+            }
+
+            if (!string.IsNullOrEmpty(pageParams.Psn))
+            {
+                query = query.Where(player => player.Psn.ToUpper().Contains(pageParams.Psn.ToUpper()));
+            }
+
+            if (pageParams.PlayerAtivo != null)
+            {
+                query = query.Where(player => player.PlayerAtivo == (pageParams.PlayerAtivo != 0));
+            }
+            
+
+            return await PageList<Player>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
+
+            //return await query.ToListAsync();
         }
 
         public async Task<Player> BuscaPlayerNome(string nome)
@@ -82,9 +149,9 @@ namespace Data.Context
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<IEnumerable<Time>> BuscaTimes(bool incluirJogadores = false)
+        public async Task<IEnumerable<Team>> BuscaTimes(bool incluirJogadores = false)
         {
-            IQueryable<Time> query = _context.Times;
+            IQueryable<Team> query = _context.Times;
 
             query = query.AsNoTracking().OrderBy(u => u.NomeTime);
 
@@ -97,27 +164,27 @@ namespace Data.Context
             return await query.ToArrayAsync();
         }
 
-        public async Task<Time> BuscaTimePorId(int id)
+        public async Task<Team> BuscaTimePorId(int id)
         {
-            IQueryable<Time> query = _context.Times;
+            IQueryable<Team> query = _context.Times;
 
             query = query.AsNoTracking().OrderBy(u => u.NomeTime).Where(h => h.Id == id);
 
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<Time> BuscaTimePorNome(string nome)
+        public async Task<Team> BuscaTimePorNome(string nome)
         {
-            IQueryable<Time> query = _context.Times;
+            IQueryable<Team> query = _context.Times;
 
             query = query.AsNoTracking().OrderBy(u => u.NomeTime).Where(u => u.NomeTime.Equals(nome));
 
             return await query.FirstOrDefaultAsync();
         }
 
-        public async Task<Time> BuscaTimePorEscudo(string escudo)
+        public async Task<Team> BuscaTimePorEscudo(string escudo)
         {
-            IQueryable<Time> query = _context.Times;
+            IQueryable<Team> query = _context.Times;
 
             query = query.AsNoTracking().OrderBy(a => a.LinkEscudo).Where(u => u.LinkEscudo.Equals(escudo));
 

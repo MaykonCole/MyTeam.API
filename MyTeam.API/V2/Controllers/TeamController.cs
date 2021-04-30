@@ -17,7 +17,7 @@ namespace MyTeam.API.V2.Controllers
     [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
     [ApiController]
-    public class TimeController : ControllerBase
+    public class TeamController : ControllerBase
     {
       
         private readonly IRepository _repo;
@@ -26,7 +26,7 @@ namespace MyTeam.API.V2.Controllers
         /// 
         /// </summary>
         /// <param name="repo"></param>
-        public TimeController( IRepository repo)
+        public TeamController( IRepository repo)
         {
            
             _repo = repo;
@@ -80,7 +80,7 @@ namespace MyTeam.API.V2.Controllers
         /// <param name="time"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Post(Time time)
+        public async Task<IActionResult> Post(Team time)
         {
             if (time != null)
             {
@@ -117,7 +117,7 @@ namespace MyTeam.API.V2.Controllers
         /// <param name="time"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Time time)
+        public async Task<IActionResult> Put(int id, Team time)
         {
             var validatime = await _repo.BuscaTimePorId(id);
 
@@ -139,7 +139,7 @@ namespace MyTeam.API.V2.Controllers
         /// <param name="time"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
-        public async Task<IActionResult> Patch(int id, Time time)
+        public async Task<IActionResult> Patch(int id, Team time)
         {
 
             var validatime = await _repo.BuscaTimePorId(id);
