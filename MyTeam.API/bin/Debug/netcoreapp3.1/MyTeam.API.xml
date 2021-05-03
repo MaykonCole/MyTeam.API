@@ -18,7 +18,7 @@
         </member>
         <member name="M:MyTeam.API.V1.Controllers.PlayerAppController.Get">
             <summary>
-            Método responsável para retornar todos os Jogadores!
+            Método responsável para retornar todos os Jogadoresssss!
             </summary>
             <returns></returns>
         </member>
@@ -140,6 +140,7 @@
             <summary>
             Método responsável para retornar 1 usuário cadastrado, de acordo o seu login
             </summary>
+            /// <param name="email"></param>
             <returns></returns>
         </member>
         <member name="M:MyTeam.API.V1.Controllers.UserController.Post(Dominio.Models.User)">
@@ -153,6 +154,7 @@
             <summary>
             Método responsavel por atualizar um Usuário
             </summary>
+             <param name="id"></param>
             <param name="user"></param>
             <returns></returns>
         </member>

@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Data.Context;
 using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace MyTeam.API.V1.Controllers
 {
     /// <summary>
@@ -15,9 +17,13 @@ namespace MyTeam.API.V1.Controllers
 
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
+
+    [ApiController]
     public class UserController : ControllerBase
     {
         private readonly IRepository _repo;
+  
+
 
         /// <summary>
         /// 
@@ -26,13 +32,14 @@ namespace MyTeam.API.V1.Controllers
         public UserController(IRepository repo)
         { 
             _repo = repo;
+          
         }
 
         /// <summary>
         /// Método responsável para retornar todos os usuarios cadastrados
         /// </summary>
         /// <returns></returns>
-        // GET: api/<PlayerController>
+        // GET: api/<UserController>
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -43,7 +50,7 @@ namespace MyTeam.API.V1.Controllers
         /// Método responsável para retornar 1 usuário cadastrado, de acordo o seu login
         /// </summary>
         /// <returns></returns>
-        // GET: api/<PlayerController>
+     
         [HttpGet("{login}")]
         public async Task<IActionResult> GetNome(string login)
         {
@@ -53,8 +60,9 @@ namespace MyTeam.API.V1.Controllers
         /// <summary>
         /// Método responsável para retornar 1 usuário cadastrado, de acordo o seu login
         /// </summary>
+        /// /// <param name="email"></param>
         /// <returns></returns>
-        // GET: api/<PlayerController>
+       
         [HttpGet("poremail/{email}")]
         public async Task<IActionResult> GetEmail(string email)
         {
@@ -100,9 +108,10 @@ namespace MyTeam.API.V1.Controllers
         /// <summary>
         /// Método responsavel por atualizar um Usuário
         /// </summary>
+        ///  <param name="id"></param>
         /// <param name="user"></param>
         /// <returns></returns>
-        [HttpPost]
+        [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, User user)
         {
 
@@ -112,11 +121,11 @@ namespace MyTeam.API.V1.Controllers
             {
                 var validaLogin = await _repo.BuscaUserPorLogin(user.Login);
 
-                if (validaLogin == null)
+                if (validaLogin == null || validauser.Login == user.Login)
                 {
                     var validaEmail = await _repo.BuscaUserPorEmail(user.Email);
 
-                    if (validaEmail == null)
+                    if (validaEmail == null || validaEmail.Email == user.Email)
                     {
                         _repo.Update(user);
                         await _repo.SaveChangeAsync();
@@ -135,11 +144,6 @@ namespace MyTeam.API.V1.Controllers
             return BadRequest("Usuário invalido!");
         }
 
-        ///// <summary>
-        ///// Método responsavel por excluir um Usuario, de acordo o seu ID.
-        ///// </summary>
-        ///// <param name="id"></param>
-        ///// <returns></returns>
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeletePorId(int id)
         {
@@ -149,7 +153,7 @@ namespace MyTeam.API.V1.Controllers
                 {
                     _repo.Delete(user);
                     await _repo.SaveChangeAsync();
-                    return Ok("Partida excluida com sucesso");
+                    return Ok("Usuário excluido com sucesso");
                 }   
             else
             {

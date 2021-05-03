@@ -40,7 +40,7 @@ namespace MyTeam.API.V1.Controllers
         }
 
         /// <summary>
-        /// Método responsável para retornar todos os Jogadores!
+        /// Método responsável para retornar todos os Jogadoresssss!
         /// </summary>
         /// <returns></returns>
         // GET: api/<PlayerController>
