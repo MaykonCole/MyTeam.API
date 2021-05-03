@@ -113,6 +113,83 @@
             <param name="nome"></param>
             <returns></returns>
         </member>
+        <member name="T:MyTeam.API.V1.Controllers.UserController">
+            <summary>
+            Versao 1 do controlador de Users
+            </summary>
+        </member>
+        <member name="M:MyTeam.API.V1.Controllers.UserController.#ctor(Data.Context.IRepository)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+        </member>
+        <member name="M:MyTeam.API.V1.Controllers.UserController.Get">
+            <summary>
+            Método responsável para retornar todos os usuarios cadastrados
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.V1.Controllers.UserController.GetNome(System.String)">
+            <summary>
+            Método responsável para retornar 1 usuário cadastrado, de acordo o seu login
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.V1.Controllers.UserController.GetEmail(System.String)">
+            <summary>
+            Método responsável para retornar 1 usuário cadastrado, de acordo o seu login
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.V1.Controllers.UserController.Post(Dominio.Models.User)">
+            <summary>
+            Método responsavel por adicionar um novo Usuário.
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.V1.Controllers.UserController.Put(System.Int32,Dominio.Models.User)">
+            <summary>
+            Método responsavel por atualizar um Usuário
+            </summary>
+            <param name="user"></param>
+            <returns></returns>
+        </member>
+        <member name="T:MyTeam.API.V2.Controllers.GameController">
+            <summary>
+            Versao 2 do controlador de Games
+            </summary>
+        </member>
+        <member name="M:MyTeam.API.V2.Controllers.GameController.#ctor(Data.Context.IRepository,AutoMapper.IMapper)">
+            <summary>
+            
+            </summary>
+            <param name="repo"></param>
+            <param name="mapper"></param>
+        </member>
+        <member name="M:MyTeam.API.V2.Controllers.GameController.Get(System.Int32)">
+            <summary>
+            Método responsável para retornar todos as Partidas de um Time!
+            </summary>
+            <returns></returns>
+        </member>
+        <!-- Badly formed XML comment ignored for member "M:MyTeam.API.V2.Controllers.GameController.Get(System.String,System.Int32)" -->
+        <member name="M:MyTeam.API.V2.Controllers.GameController.Post(Dominio.Models.Game)">
+            <summary>
+            Método responsavel por adicionar uma nova Partida.
+            </summary>
+            <param name="game"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.V2.Controllers.GameController.Put(System.Int32,Dominio.Models.Game)">
+            <summary>
+            Método responsavel por atualizar uma Partida, de acordo o seu ID.
+            </summary>
+            <param name="id"></param>
+            <param name="player"></param>
+            <returns></returns>
+        </member>
         <member name="T:MyTeam.API.V2.Controllers.TeamController">
             <summary>
             Versao 2 do controlador de Times
@@ -152,14 +229,6 @@
             <returns></returns>
         </member>
         <member name="M:MyTeam.API.V2.Controllers.TeamController.Put(System.Int32,Dominio.Models.Team)">
-            <summary>
-            Método responsavel por excluir um Time, de acordo o seu ID.
-            </summary>
-            <param name="id"></param>
-            <param name="time"></param>
-            <returns></returns>
-        </member>
-        <member name="M:MyTeam.API.V2.Controllers.TeamController.Patch(System.Int32,Dominio.Models.Team)">
             <summary>
             Método responsavel por atualizar um Time, de acordo o seu ID.
             </summary>

@@ -111,7 +111,7 @@ namespace MyTeam.API.V2.Controllers
         }
 
         /// <summary>
-        /// Método responsavel por excluir um Time, de acordo o seu ID.
+        /// Método responsavel por atualizar um Time, de acordo o seu ID.
         /// </summary>
         /// <param name="id"></param>
         /// <param name="time"></param>
@@ -132,27 +132,7 @@ namespace MyTeam.API.V2.Controllers
 
         }
 
-        /// <summary>
-        /// Método responsavel por atualizar um Time, de acordo o seu ID.
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="time"></param>
-        /// <returns></returns>
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> Patch(int id, Team time)
-        {
-
-            var validatime = await _repo.BuscaTimePorId(id);
-
-            if (validatime != null)
-            {
-                _repo.Update(time);
-                await _repo.SaveChangeAsync();
-                return Ok(await _repo.BuscaTimes());
-            }
-
-            return BadRequest("Timer não encontrado!");
-        }
+    
 
         /// <summary>
         /// Método responsavel por excluir um Time, de acordo o seu ID.

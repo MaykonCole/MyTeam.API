@@ -68,7 +68,7 @@ namespace MyTeam.API.V1.Controllers
             {
                         player.Nome = player.Nome.ToLower();
                         player.Psn = player.Psn.ToLower();
-                         player.Posicao = player.Posicao.ToLower();
+                        player.Posicao = player.Posicao.ToLower();
                         _repo.Add(player);
                         await _repo.SaveChangeAsync();
                         return Ok(player.Nome + " cadastrado com sucesso.");
