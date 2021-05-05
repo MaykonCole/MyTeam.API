@@ -129,5 +129,4 @@ C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTea
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.pdb
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.genruntimeconfig.cache
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.csproj.CoreCompileInputs.cache
-C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\DevDesiger\source\repos\MyTeam\MyTeam.API\obj\Debug\netcoreapp3.1\MyTeam.API.MvcApplicationPartsAssemblyInfo.cache

@@ -32,15 +32,18 @@ namespace MyTeam.API.V2.Controllers
             _repo = repo;
         }
 
-        /// <summary>
-        /// Método responsável para retornar todos os Times.
-        /// </summary>
-        /// <returns></returns>
+      
 
-        [HttpGet]
-        public async Task<IActionResult> Get()
+
+        /// <summary>
+        /// Método responsavel por retornar todos os TImes - Perfil FIFA FALSE ou Perfil PES TRUE
+        /// </summary>
+        /// <param name="game"></param>
+        /// <returns></returns>
+        [HttpGet("{game:bool}")]
+        public async Task<IActionResult> Get(bool game)
         {
-            return Ok(await _repo.BuscaTimes(true));
+            return Ok(await _repo.BuscaTimes(false, false, game));
         }
 
         /// <summary>
@@ -68,6 +71,23 @@ namespace MyTeam.API.V2.Controllers
         public async Task<IActionResult> GetPorNome(string nome)
         {
             var time = await _repo.BuscaTimePorNome(nome);
+            
+
+            if (time == null) return BadRequest("Time com Nome " + nome + " não localizado.");
+
+            return Ok(time);
+        }
+
+        /// <summary>
+        /// Método responsavel por retornar os Times que possui caracteres iguais aos repassados. LIKE SQL.
+        /// </summary>
+        /// <param name="nome"></param>
+        /// <returns></returns>
+        [HttpGet("like/{nome}")]
+        public async Task<IActionResult> GetPorLikeNome(string nome)
+        {
+            var time = await _repo.BuscaTimePorLikeNome(nome);
+
 
             if (time == null) return BadRequest("Time com Nome " + nome + " não localizado.");
 
@@ -94,7 +114,7 @@ namespace MyTeam.API.V2.Controllers
                     {
                         _repo.Add(time);
                         await _repo.SaveChangeAsync();
-                        return Ok(await _repo.BuscaTimes());
+                        return Ok("Time adicionado com sucesso.");
                     }
                     else
                     {
@@ -125,7 +145,7 @@ namespace MyTeam.API.V2.Controllers
             {
                 _repo.Update(time);
                await _repo.SaveChangeAsync();
-                return Ok(await _repo.BuscaTimes());
+                return Ok("Time atualizado com sucesso.");
             }
 
             return BadRequest("Time não encontrado!");
@@ -148,7 +168,7 @@ namespace MyTeam.API.V2.Controllers
             {
                 _repo.Delete(time);
                 await _repo.SaveChangeAsync();
-                return Ok(await _repo.BuscaTimes());
+                return Ok("Time excluido com sucesso.");
             }
 
             return BadRequest("Time não encontrado!");
@@ -168,7 +188,7 @@ namespace MyTeam.API.V2.Controllers
             {
                 _repo.Delete(time);
                 await _repo.SaveChangeAsync();
-                return Ok(await _repo.BuscaTimes());
+                return Ok("Time excluido com sucesso.");
             }
 
             return BadRequest("Time não encontrado!");

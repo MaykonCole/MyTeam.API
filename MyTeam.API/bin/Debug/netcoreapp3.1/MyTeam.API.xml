@@ -203,10 +203,11 @@
             </summary>
             <param name="repo"></param>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TeamController.Get">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.Get(System.Boolean)">
             <summary>
-            Método responsável para retornar todos os Times.
+            Método responsavel por retornar todos os TImes - Perfil FIFA FALSE ou Perfil PES TRUE
             </summary>
+            <param name="game"></param>
             <returns></returns>
         </member>
         <member name="M:MyTeam.API.V2.Controllers.TeamController.GetPorId(System.Int32)">
@@ -219,6 +220,13 @@
         <member name="M:MyTeam.API.V2.Controllers.TeamController.GetPorNome(System.String)">
             <summary>
             Método responsavel por retornar apenas um único Time, de acordo o seu Nome.
+            </summary>
+            <param name="nome"></param>
+            <returns></returns>
+        </member>
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.GetPorLikeNome(System.String)">
+            <summary>
+            Método responsavel por retornar os Times que possui caracteres iguais aos repassados. LIKE SQL.
             </summary>
             <param name="nome"></param>
             <returns></returns>

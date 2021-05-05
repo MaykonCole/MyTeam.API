@@ -26,10 +26,7 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("IdTeam")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TeamId")
+                    b.Property<int>("TeamId")
                         .HasColumnType("int");
 
                     b.Property<string>("adversario")
@@ -37,8 +34,9 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<DateTime>("data")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("data")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("dataAtualizacao")
                         .HasColumnType("datetime2");
@@ -72,7 +70,144 @@ namespace Data.Migrations
 
                     b.HasIndex("TeamId");
 
-                    b.ToTable("Game");
+                    b.ToTable("Games");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            TeamId = 1,
+                            adversario = "Tombense",
+                            data = "06-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 376, DateTimeKind.Local).AddTicks(7205),
+                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 376, DateTimeKind.Local).AddTicks(7221),
+                            dtAdversario = "Zezinho",
+                            dtCadastro = "Maykon",
+                            horario = "16:30",
+                            psnAdversario = "tomtom",
+                            telefoneAdversario = "31956785421",
+                            tipoJogo = "Camp. Mineiro"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            TeamId = 1,
+                            adversario = "America",
+                            data = "05-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(6977),
+                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(6980),
+                            dtAdversario = "Lisca",
+                            dtCadastro = "Isabela",
+                            horario = "22:00",
+                            psnAdversario = "liscadoid",
+                            telefoneAdversario = "31956784321",
+                            tipoJogo = "Camp. Mineiro"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            TeamId = 1,
+                            adversario = "Cruzeiro",
+                            data = "05-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7139),
+                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7140),
+                            dtAdversario = "Felipe",
+                            dtCadastro = "Ramiro",
+                            horario = "16:00",
+                            psnAdversario = "conception",
+                            telefoneAdversario = "38991081254",
+                            tipoJogo = "Camp. Mineiro"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            TeamId = 2,
+                            adversario = "Tombense",
+                            data = "09-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7164),
+                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7166),
+                            dtAdversario = "Zezinho",
+                            dtCadastro = "Maykon",
+                            horario = "16:30",
+                            psnAdversario = "tomtom",
+                            telefoneAdversario = "31956785421",
+                            tipoJogo = "Camp. Mineiro"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            TeamId = 2,
+                            adversario = "America",
+                            data = "07-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7187),
+                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7188),
+                            dtAdversario = "Lisca",
+                            dtCadastro = "Isabela",
+                            horario = "22:00",
+                            psnAdversario = "liscadoid",
+                            telefoneAdversario = "31956784321",
+                            tipoJogo = "Camp. Mineiro"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            TeamId = 2,
+                            adversario = "Cruzeiro",
+                            data = "07-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7225),
+                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7227),
+                            dtAdversario = "Felipe",
+                            dtCadastro = "Ramiro",
+                            horario = "16:00",
+                            psnAdversario = "conception",
+                            telefoneAdversario = "38991081254",
+                            tipoJogo = "Camp. Mineiro"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            TeamId = 3,
+                            adversario = "Tombense",
+                            data = "06-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7246),
+                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7248),
+                            dtAdversario = "Zezinho",
+                            dtCadastro = "Maykon",
+                            horario = "16:30",
+                            psnAdversario = "tomtom",
+                            telefoneAdversario = "31956785421",
+                            tipoJogo = "Camp. Mineiro"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            TeamId = 3,
+                            adversario = "America",
+                            data = "08-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7267),
+                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7269),
+                            dtAdversario = "Lisca",
+                            dtCadastro = "Isabela",
+                            horario = "22:00",
+                            psnAdversario = "liscadoid",
+                            telefoneAdversario = "31956784321",
+                            tipoJogo = "Camp. Mineiro"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            TeamId = 3,
+                            adversario = "Cruzeiro",
+                            data = "08-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7289),
+                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7291),
+                            dtAdversario = "Felipe",
+                            dtCadastro = "Ramiro",
+                            horario = "16:00",
+                            psnAdversario = "conception",
+                            telefoneAdversario = "38991081254",
+                            tipoJogo = "Camp. Mineiro"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Player", b =>
@@ -84,8 +219,8 @@ namespace Data.Migrations
 
                     b.Property<string>("Celular")
                         .IsRequired()
-                        .HasColumnType("nvarchar(11)")
-                        .HasMaxLength(11);
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<DateTime?>("DataAtualizacao")
                         .HasColumnType("datetime2");
@@ -127,14 +262,169 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
 
-                    b.Property<int?>("TimeId")
+                    b.Property<int?>("TeamId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("TimeId");
+                    b.HasIndex("TeamId");
 
                     b.ToTable("Players");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Celular = "31993712719",
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(8974),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(8960),
+                            DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoURL = "fotomaykon.png",
+                            Nome = "Maykon",
+                            Numero = 13,
+                            PerfilPlayer = "Jogador",
+                            PlayerAtivo = true,
+                            PosicaoA = "Volante",
+                            PosicaoP = "Meia Atacante",
+                            Psn = "Maykon1993",
+                            TeamId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Celular = "11978653211",
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9604),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9581),
+                            DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoURL = "fotosamuel.png",
+                            Nome = "Samuel",
+                            Numero = 7,
+                            PerfilPlayer = "Jogador",
+                            PlayerAtivo = true,
+                            PosicaoA = "Volante",
+                            PosicaoP = "Meia Atacante",
+                            Psn = "santacruzpe",
+                            TeamId = 1
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Celular = "44967543245",
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9813),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9809),
+                            DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoURL = "fotocelio.png",
+                            Nome = "Celio",
+                            Numero = 99,
+                            PerfilPlayer = "DT",
+                            PlayerAtivo = true,
+                            PosicaoA = "Volante",
+                            PosicaoP = "Atacante",
+                            Psn = "Celio_Shadow_14",
+                            TeamId = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Celular = "31993122719",
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9835),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9832),
+                            DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoURL = "fotojose.png",
+                            Nome = "Jose",
+                            Numero = 3,
+                            PerfilPlayer = "DT",
+                            PlayerAtivo = true,
+                            PosicaoA = "Volante",
+                            PosicaoP = "Atacante",
+                            Psn = "joselito1970",
+                            TeamId = 2
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Celular = "11978653211",
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9849),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9847),
+                            DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoURL = "fotomauricio.png",
+                            Nome = "Mauricio",
+                            Numero = 4,
+                            PerfilPlayer = "Jogador",
+                            PlayerAtivo = true,
+                            PosicaoA = "Volante",
+                            PosicaoP = "Goleiro",
+                            Psn = "maumau",
+                            TeamId = 2
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Celular = "44967542145",
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9873),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9870),
+                            DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoURL = "fotofernando.png",
+                            Nome = "Fernando",
+                            Numero = 6,
+                            PerfilPlayer = "Jogador",
+                            PlayerAtivo = true,
+                            PosicaoA = "Lateral",
+                            PosicaoP = "Meia Atacante",
+                            Psn = "fernando123",
+                            TeamId = 2
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Celular = "31993154719",
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9887),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9884),
+                            DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoURL = "fotoadam.png",
+                            Nome = "Adam",
+                            Numero = 2,
+                            PerfilPlayer = "Jogador",
+                            PlayerAtivo = true,
+                            PosicaoA = "Lateral",
+                            PosicaoP = "Zagueiro",
+                            Psn = "adao",
+                            TeamId = 3
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Celular = "11978113211",
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9900),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9898),
+                            DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoURL = "fotoemerson.png",
+                            Nome = "Emerson",
+                            Numero = 5,
+                            PerfilPlayer = "DT",
+                            PlayerAtivo = true,
+                            PosicaoA = "Atacante",
+                            PosicaoP = "Volante",
+                            Psn = "emer",
+                            TeamId = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Celular = "44961242145",
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9913),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9911),
+                            DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FotoURL = "fotojullius.png",
+                            Nome = "Jullius",
+                            Numero = 9,
+                            PerfilPlayer = "Jogador",
+                            PlayerAtivo = true,
+                            PosicaoA = "agueiro",
+                            PosicaoP = "Atacante",
+                            Psn = "cachaca",
+                            TeamId = 3
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.PlayerApp", b =>
@@ -145,19 +435,26 @@ namespace Data.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Nome")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Posicao")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProcuraTime")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Psn")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.Property<string>("Telefone")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(20)")
+                        .HasMaxLength(20);
 
                     b.HasKey("Id");
 
@@ -171,7 +468,7 @@ namespace Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<DateTime?>("DataAtualizacao")
+                    b.Property<DateTime>("DataAtualizacao")
                         .HasColumnType("datetime2");
 
                     b.Property<DateTime>("DataCadastro")
@@ -179,6 +476,9 @@ namespace Data.Migrations
 
                     b.Property<DateTime?>("DataFundacao")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("GamePes")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LinkEscudo")
                         .HasColumnType("nvarchar(max)");
@@ -199,9 +499,10 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1,
-                            DataAtualizacao = new DateTime(2021, 4, 30, 17, 48, 25, 94, DateTimeKind.Local).AddTicks(6647),
-                            DataCadastro = new DateTime(2021, 4, 30, 17, 48, 25, 99, DateTimeKind.Local).AddTicks(7565),
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 367, DateTimeKind.Local).AddTicks(6875),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 372, DateTimeKind.Local).AddTicks(4633),
                             DataFundacao = new DateTime(2020, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            GamePes = true,
                             LinkEscudo = "link.huntersx.jpg",
                             NomeTime = "Huntersx",
                             TimeAtivo = true
@@ -209,9 +510,10 @@ namespace Data.Migrations
                         new
                         {
                             Id = 2,
-                            DataAtualizacao = new DateTime(2021, 4, 30, 17, 48, 25, 100, DateTimeKind.Local).AddTicks(8033),
-                            DataCadastro = new DateTime(2021, 4, 30, 17, 48, 25, 100, DateTimeKind.Local).AddTicks(8374),
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2450),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2692),
                             DataFundacao = new DateTime(2019, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            GamePes = false,
                             LinkEscudo = "link.bleuz.jpg",
                             NomeTime = "Bleuz",
                             TimeAtivo = true
@@ -219,12 +521,35 @@ namespace Data.Migrations
                         new
                         {
                             Id = 3,
-                            DataAtualizacao = new DateTime(2021, 4, 30, 17, 48, 25, 100, DateTimeKind.Local).AddTicks(8539),
-                            DataCadastro = new DateTime(2021, 4, 30, 17, 48, 25, 100, DateTimeKind.Local).AddTicks(8583),
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2785),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2808),
                             DataFundacao = new DateTime(2021, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            GamePes = true,
                             LinkEscudo = "link.mastermaq.jpg",
                             NomeTime = "Mastermaq",
-                            TimeAtivo = false
+                            TimeAtivo = true
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2814),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2827),
+                            DataFundacao = new DateTime(1924, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            GamePes = false,
+                            LinkEscudo = "cruzeirocaiu.jpg",
+                            NomeTime = "Cruzeiro",
+                            TimeAtivo = true
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2832),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2842),
+                            DataFundacao = new DateTime(1908, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            GamePes = true,
+                            LinkEscudo = "galaodamassa.jpg",
+                            NomeTime = "Atletico",
+                            TimeAtivo = true
                         });
                 });
 
@@ -241,12 +566,12 @@ namespace Data.Migrations
                     b.Property<DateTime>("DataCadastro")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Login")
+                    b.Property<string>("Email")
                         .IsRequired()
-                        .HasColumnType("nvarchar(20)")
-                        .HasMaxLength(20);
+                        .HasColumnType("nvarchar(30)")
+                        .HasMaxLength(30);
 
-                    b.Property<string>("PerfilUsuario")
+                    b.Property<string>("Login")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)")
                         .HasMaxLength(20);
@@ -264,20 +589,51 @@ namespace Data.Migrations
                     b.HasIndex("PlayerId");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(702),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(688),
+                            Email = "maykontaiorpm@gmail.com",
+                            Login = "Maykon1993",
+                            Senha = "teste@123"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(4572),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(4559),
+                            Email = "belbelm@gmail.com",
+                            Login = "belcastroic",
+                            Senha = "teste@123"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(4642),
+                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(4639),
+                            Email = "santacruz@gmail.com",
+                            Login = "santacruzpe451",
+                            Senha = "teste@123"
+                        });
                 });
 
             modelBuilder.Entity("Dominio.Models.Game", b =>
                 {
                     b.HasOne("Dominio.Models.Team", "Team")
                         .WithMany("Games")
-                        .HasForeignKey("TeamId");
+                        .HasForeignKey("TeamId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Dominio.Models.Player", b =>
                 {
-                    b.HasOne("Dominio.Models.Team", "Time")
+                    b.HasOne("Dominio.Models.Team", "Team")
                         .WithMany("Players")
-                        .HasForeignKey("TimeId");
+                        .HasForeignKey("TeamId");
                 });
 
             modelBuilder.Entity("Dominio.Models.User", b =>

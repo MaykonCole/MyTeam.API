@@ -14,7 +14,7 @@ namespace Dominio.Models
 
         }
 
-        public Game(int id, string dtCadastro, string adversario, string telefoneAdversario, string dtAdversario, string psnAdversario, string horario, DateTime data, string tipoJogo, int idTeam)
+        public Game(int id, string dtCadastro, string adversario, string telefoneAdversario, string dtAdversario, string psnAdversario, string horario, string data, string tipoJogo, int idTeam)
         {
             Id = id;
             this.dtCadastro = dtCadastro;
@@ -27,7 +27,7 @@ namespace Dominio.Models
         
             this.data = data;
             this.tipoJogo = tipoJogo;
-            IdTeam = idTeam;
+            TeamId = idTeam;
         }
 
         [Key]
@@ -49,15 +49,14 @@ namespace Dominio.Models
         public  String horario { get; set; }
 
         [Required]
-        [DataType(DataType.Date)]
-        public DateTime data { get; set; }
+        public String data { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime dataAtualizacao { get; set; } = DateTime.Now;
         [DataType(DataType.DateTime)]
         public DateTime dataCadastro { get; set; } = DateTime.Now;
       
         public  String? tipoJogo { get; set; }
-        public int? IdTeam { get; set; }
+        public int TeamId { get; set; }
         public Team Team { get; set; }
     }
 }

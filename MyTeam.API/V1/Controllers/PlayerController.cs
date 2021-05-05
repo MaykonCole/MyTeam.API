@@ -56,7 +56,7 @@ namespace MyTeam.API.V1.Controllers
 
             Response.AddPagination(players.AtualPagina, players.TamanhoPagina, players.ItemTotal, players.TotalPaginas);
 
-                return Ok(playersdto);
+                return Ok(players);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace MyTeam.API.V1.Controllers
                     {
                         _repo.Add(player);
                        await _repo.SaveChangeAsync();
-                        return Created($"/api/player/{player.Id}", player);
+                        return Ok("Player cadastrado com sucesso.");
                     }
                     else
                     {
@@ -165,15 +165,15 @@ namespace MyTeam.API.V1.Controllers
             {
                 var validaNome = await _repo.BuscaPlayerNome(player.Nome);
 
-                if (validaNome == null)
+                if (validaNome == null || validaplayer.Nome == player.Nome)
                 {
                     var validaPsn = await _repo.BuscaPlayerPorPsn(player.Psn);
 
-                    if (validaPsn == null)
+                    if (validaPsn == null || validaplayer.Psn == player.Psn)
                     {
                         _repo.Update(player);
                         await _repo.SaveChangeAsync();
-                        return Created($"/api/player/{player.Id}", player);
+                        return Ok("Player atualizado com sucesso.");
                     }
                     else
                     {

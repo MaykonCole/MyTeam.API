@@ -200,6 +200,62 @@
     <Compile Include="Migrations\20210430204826_ClassesOK.designer.cs">
       <DependentUpon>20210430204826_ClassesOK.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210501160652_Classes.cs" />
+    <Compile Include="Migrations\20210501160652_Classes.designer.cs">
+      <DependentUpon>20210501160652_Classes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210501161453_ClassesOkk.cs" />
+    <Compile Include="Migrations\20210501161453_ClassesOkk.designer.cs">
+      <DependentUpon>20210501161453_ClassesOkk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210501174710_TeamGame.cs" />
+    <Compile Include="Migrations\20210501174710_TeamGame.designer.cs">
+      <DependentUpon>20210501174710_TeamGame.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210501175049_ClassesComDados.cs" />
+    <Compile Include="Migrations\20210501175049_ClassesComDados.designer.cs">
+      <DependentUpon>20210501175049_ClassesComDados.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210502132551_GameDataString.cs" />
+    <Compile Include="Migrations\20210502132551_GameDataString.designer.cs">
+      <DependentUpon>20210502132551_GameDataString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210502133114_DataOnString.cs" />
+    <Compile Include="Migrations\20210502133114_DataOnString.designer.cs">
+      <DependentUpon>20210502133114_DataOnString.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210502134646_DiaMesConvertido.cs" />
+    <Compile Include="Migrations\20210502134646_DiaMesConvertido.designer.cs">
+      <DependentUpon>20210502134646_DiaMesConvertido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210502135914_Tracinho.cs" />
+    <Compile Include="Migrations\20210502135914_Tracinho.designer.cs">
+      <DependentUpon>20210502135914_Tracinho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210502150818_campotelefone.cs" />
+    <Compile Include="Migrations\20210502150818_campotelefone.designer.cs">
+      <DependentUpon>20210502150818_campotelefone.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210503132204_ClasseUser.cs" />
+    <Compile Include="Migrations\20210503132204_ClasseUser.designer.cs">
+      <DependentUpon>20210503132204_ClasseUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210503184603_FIFAORPES.cs" />
+    <Compile Include="Migrations\20210503184603_FIFAORPES.designer.cs">
+      <DependentUpon>20210503184603_FIFAORPES.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210503184812_fifaoupes.cs" />
+    <Compile Include="Migrations\20210503184812_fifaoupes.designer.cs">
+      <DependentUpon>20210503184812_fifaoupes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210503194027_cargainicialplayer.cs" />
+    <Compile Include="Migrations\20210503194027_cargainicialplayer.designer.cs">
+      <DependentUpon>20210503194027_cargainicialplayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210505141357_campocelular.cs" />
+    <Compile Include="Migrations\20210505141357_campocelular.designer.cs">
+      <DependentUpon>20210505141357_campocelular.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DataContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

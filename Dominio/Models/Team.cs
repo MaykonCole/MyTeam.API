@@ -11,13 +11,14 @@ namespace Dominio.Models
     {
         public Team(){}
 
-        public Team(int id, string nomeTime, string linkEscudo,  DateTime dataAtualizacao, DateTime dataFundacao, bool ativo)
+        public Team(int id, string nomeTime, string linkEscudo,  DateTime dataAtualizacao, DateTime dataFundacao, bool gamePes, bool ativo)
         {
             Id = id;
             NomeTime = nomeTime;
             LinkEscudo = linkEscudo;
             DataAtualizacao = dataAtualizacao;
             DataFundacao = dataFundacao;
+            GamePes = gamePes;
             TimeAtivo = ativo;
         }
 
@@ -32,7 +33,10 @@ namespace Dominio.Models
 
         public DateTime? DataFundacao { get; set; }
 
+        public bool GamePes { get; set; }
         public bool TimeAtivo { get; set; } = true;
+
+        
 
         public IEnumerable<Player> Players { get; set; }
 

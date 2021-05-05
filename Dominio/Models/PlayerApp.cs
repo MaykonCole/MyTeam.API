@@ -37,7 +37,7 @@ namespace Dominio.Models
         public string Posicao { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [StringLength(11, MinimumLength = 10, ErrorMessage = "Nome do time adversário deve conter no minimo 10 caracteres")]
+        [StringLength(20, MinimumLength = 10, ErrorMessage = "Nome do time adversário deve conter no minimo 10 caracteres")]
         public string Telefone { get; set; }
 
         [Required]

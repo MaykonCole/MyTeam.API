@@ -8,11 +8,13 @@ using System.Threading.Tasks;
 
 namespace Dominio.Models
 {
+
+  
     public class Player
     {
         public Player(){}
 
-        public Player(int id, string nome, string psn, string celular, DateTime dataNascimento, string perfilPlayer, bool playerAtivo, string posicaoP, string posicaoA, int? numero, string fotoURL, int? timeId)
+        public Player(int id, string nome, string psn, string celular, DateTime dataNascimento, string perfilPlayer, string posicaoP, string posicaoA, int? numero, string fotoURL, int? timeId)
         {
             Id = id;
             Nome = nome;
@@ -20,12 +22,11 @@ namespace Dominio.Models
             Celular = celular;
             DataNascimento = dataNascimento;
             PerfilPlayer = perfilPlayer;
-            PlayerAtivo = playerAtivo;
             PosicaoP = posicaoP;
             PosicaoA = posicaoA;
             Numero = numero;
             FotoURL = fotoURL;
-            TimeId = timeId;
+            TeamId = timeId;
 
         }
 
@@ -39,7 +40,7 @@ namespace Dominio.Models
         public string Psn { get; set; }
 
         [DataType(DataType.PhoneNumber)]
-        [StringLength(11, MinimumLength = 10, ErrorMessage = "Nome do time adversário deve conter no minimo 10 caracteres")]
+        [StringLength(20, MinimumLength = 7, ErrorMessage = "Celular deve ter no minimo 7 caracteres")]
         [Required]
         public string Celular { get; set; }
 
@@ -64,9 +65,9 @@ namespace Dominio.Models
         public string? PosicaoA { get; set; }
         public int? Numero { get; set; }
         public string? FotoURL { get; set; }
-        public int? TimeId { get; set; }
+        public int? TeamId { get; set; }
 
-        public Team Time { get; set; }
+        public Team Team { get; set; }
 
        
     }
