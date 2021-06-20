@@ -121,3 +121,4 @@ C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.csproj.CoreCom
 C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.csproj.CopyComplete
 C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.dll
 C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.pdb
+C:\Users\DevDesiger\source\repos\MyTeam\Dominio\obj\Debug\Dominio.csproj.AssemblyReference.cache
