@@ -7,6 +7,7 @@ using Data.Context;
 using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Service.Interface;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace MyTeam.API.V1.Controllers
@@ -21,17 +22,20 @@ namespace MyTeam.API.V1.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IRepository _repo;
-  
+
+        private readonly ICrud _crud;
+        private readonly IUser _userRep;
 
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="repo"></param>
-        public UserController(IRepository repo)
-        { 
-            _repo = repo;
+        /// /// /// <param name="crud"></param>
+        /// <param name="userrep"></param>
+        public UserController(IUser userrep, ICrud crud)
+        {
+            _crud = crud;
+            _userRep = userrep;
           
         }
 
@@ -43,7 +47,7 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _repo.BuscaUsers());
+            return Ok(await _userRep.BuscaUsers());
         }
 
         /// <summary>
@@ -54,7 +58,7 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("{login}")]
         public async Task<IActionResult> GetNome(string login)
         {
-            return Ok(await _repo.BuscaUserPorLogin(login));
+            return Ok(await _userRep.BuscaUserPorLogin(login));
         }
 
         /// <summary>
@@ -66,7 +70,7 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("poremail/{email}")]
         public async Task<IActionResult> GetEmail(string email)
         {
-            return Ok(await _repo.BuscaUserPorEmail(email));
+            return Ok(await _userRep.BuscaUserPorEmail(email));
         }
 
 
@@ -80,16 +84,16 @@ namespace MyTeam.API.V1.Controllers
         {
             if (user != null)
             {
-                var validaLogin = await _repo.BuscaUserPorLogin(user.Login);
+                var validaLogin = await _userRep.BuscaUserPorLogin(user.Login);
 
                 if (validaLogin == null)
                 {
-                    var validaEmail = await _repo.BuscaUserPorEmail(user.Email);
+                    var validaEmail = await _userRep.BuscaUserPorEmail(user.Email);
 
                     if (validaEmail == null)
                     {
-                        _repo.Add(user);
-                        await _repo.SaveChangeAsync();
+                        _crud.Add(user);
+                        await _crud.SaveChangeAsync();
                         return Ok("Usuario " + user.Login + " cadastrado com sucesso.");
                     }
                     else
@@ -115,20 +119,20 @@ namespace MyTeam.API.V1.Controllers
         public async Task<IActionResult> Put(int id, User user)
         {
 
-            var validauser = await _repo.BuscaUserPorId(id);
+            var validauser = await _userRep.BuscaUserPorId(id);
 
             if (validauser != null)
             {
-                var validaLogin = await _repo.BuscaUserPorLogin(user.Login);
+                var validaLogin = await _userRep.BuscaUserPorLogin(user.Login);
 
                 if (validaLogin == null || validauser.Login == user.Login)
                 {
-                    var validaEmail = await _repo.BuscaUserPorEmail(user.Email);
+                    var validaEmail = await _userRep.BuscaUserPorEmail(user.Email);
 
                     if (validaEmail == null || validaEmail.Email == user.Email)
                     {
-                        _repo.Update(user);
-                        await _repo.SaveChangeAsync();
+                        _crud.Update(user);
+                        await _crud.SaveChangeAsync();
                         return Ok("Usuario " + user.Login + " atualizado com sucesso.");
                     }
                     else
@@ -147,12 +151,12 @@ namespace MyTeam.API.V1.Controllers
         [HttpDelete("{id:int}")]
         public async Task<IActionResult> DeletePorId(int id)
         {
-            var user = await _repo.BuscaUserPorId(id);
+            var user = await _userRep.BuscaUserPorId(id);
 
                 if (user != null)
                 {
-                    _repo.Delete(user);
-                    await _repo.SaveChangeAsync();
+                    _crud.Delete(user);
+                    await _crud.SaveChangeAsync();
                     return Ok("Usuário excluido com sucesso");
                 }   
             else

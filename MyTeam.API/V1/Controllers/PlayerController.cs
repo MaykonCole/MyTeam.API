@@ -10,6 +10,7 @@ using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Service.Interface;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,18 +27,20 @@ namespace MyTeam.API.V1.Controllers
     public class PlayerController : ControllerBase
     {
 
-  
-        private readonly IRepository _repo;
+        private readonly ICrud _crud;
+        private readonly IPlayer _playerRep;
         private readonly IMapper _mapper;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="repo"></param>
+        /// /// <param name="crud"></param>
+        /// <param name="playerrep"></param>
         /// <param name="mapper"></param>
-        public PlayerController( IRepository repo, IMapper mapper)
+        public PlayerController(ICrud crud, IPlayer playerrep, IMapper mapper)
         {
-            _repo = repo;
+            _crud = crud;
+            _playerRep = playerrep;
             _mapper = mapper;
 
         }
@@ -50,7 +53,7 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet]
         public async Task<IActionResult> Get([FromQuery]PageParams pageParams)
         {
-            var players = await _repo.BuscaPlayers(pageParams, false);
+            var players = await _playerRep.BuscaPlayers(pageParams, false);
 
            var playersdto = _mapper.Map<IEnumerable<PlayerDto>>(players);
 
@@ -67,7 +70,7 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetPorId(int id)
         {
-            var player = await _repo.BuscaPlayerPorId(id);
+            var player = await _playerRep.BuscaPlayerPorId(id);
 
             if (player == null) return BadRequest("Player com ID " + id + " não localizado.");
 
@@ -86,7 +89,7 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("pornome/{nome}")]
         public async Task<IActionResult> GetPorNomeQueryString(string nome)
         {
-            var player = await _repo.BuscaPlayerNome(nome);
+            var player = await _playerRep.BuscaPlayerNome(nome);
 
             if (player == null) return BadRequest("Player " + nome + " não localizado.");
 
@@ -103,7 +106,7 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("porpsn/{psn}")]
         public async Task<IActionResult> GetPorPsnQueryString(string psn)
         {
-            var player = await _repo.BuscaPlayerPorPsn(psn);
+            var player = await _playerRep.BuscaPlayerPorPsn(psn);
 
             if (player == null) return BadRequest("PSN " + psn + " não localizado.");
 
@@ -125,16 +128,16 @@ namespace MyTeam.API.V1.Controllers
             if (player != null) {
                 
 
-               var validaNome = await _repo.BuscaPlayerNome(player.Nome);
+               var validaNome = await _playerRep.BuscaPlayerNome(player.Nome);
 
                 if (validaNome == null)
                 {
-                    var validaPsn = await _repo.BuscaPlayerPorPsn(player.Psn);
+                    var validaPsn = await _playerRep.BuscaPlayerPorPsn(player.Psn);
 
                     if (validaPsn == null)
                     {
-                        _repo.Add(player);
-                       await _repo.SaveChangeAsync();
+                        _crud.Add(player);
+                       await _crud.SaveChangeAsync();
                         return Ok("Player cadastrado com sucesso.");
                     }
                     else
@@ -159,20 +162,21 @@ namespace MyTeam.API.V1.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, Player player)
         {
-            var validaplayer = await _repo.BuscaPlayerPorId(id);
+            var validaplayer = await _playerRep.BuscaPlayerPorId(id);
 
             if (validaplayer != null)
             {
-                var validaNome = await _repo.BuscaPlayerNome(player.Nome);
+                var validaNome = await _playerRep.BuscaPlayerNome(player.Nome);
 
                 if (validaNome == null || validaplayer.Nome == player.Nome)
                 {
-                    var validaPsn = await _repo.BuscaPlayerPorPsn(player.Psn);
+                    var validaPsn = await _playerRep.BuscaPlayerPorPsn(player.Psn);
 
                     if (validaPsn == null || validaplayer.Psn == player.Psn)
+
                     {
-                        _repo.Update(player);
-                        await _repo.SaveChangeAsync();
+                        _crud.Update(player);
+                        await _crud.SaveChangeAsync();
                         return Ok("Player atualizado com sucesso.");
                     }
                     else
@@ -200,20 +204,20 @@ namespace MyTeam.API.V1.Controllers
         public async Task<IActionResult> Patch(int id, Player player)
         {
 
-            var validaplayer = await _repo.BuscaPlayerPorId(id);
+            var validaplayer = await _playerRep.BuscaPlayerPorId(id);
 
             if (validaplayer != null)
             {
-                var validaNome = await _repo.BuscaPlayerNome(player.Nome);
+                var validaNome = await _playerRep.BuscaPlayerNome(player.Nome);
 
                 if (validaNome == null)
                 {
-                    var validaPsn = await _repo.BuscaPlayerPorPsn(player.Psn);
+                    var validaPsn = await _playerRep.BuscaPlayerPorPsn(player.Psn);
 
                     if (validaPsn == null)
                     {
-                        _repo.Update(player);
-                        await _repo.SaveChangeAsync();
+                        _crud.Update(player);
+                        await _crud.SaveChangeAsync();
                         return Created($"/api/player/{player.Id}", player);
                     }
                     else
@@ -238,13 +242,13 @@ namespace MyTeam.API.V1.Controllers
         [HttpDelete("excluirplayerporid/{id}")]
         public async Task<IActionResult> DeletePorId(int id)
         {
-            var player = await _repo.BuscaPlayerPorId(id);
+            var player = await _playerRep.BuscaPlayerPorId(id);
 
 
             if (player != null)
             {
-                _repo.Delete(player);
-                await _repo.SaveChangeAsync();
+                _crud.Delete(player);
+                await _crud.SaveChangeAsync();
                 return Ok(player);
             }
 
@@ -261,12 +265,12 @@ namespace MyTeam.API.V1.Controllers
         public async Task<IActionResult> DeletePorNome(string nome)
         {
 
-            var player = await _repo.BuscaPlayerNome(nome);
+            var player = await _playerRep.BuscaPlayerNome(nome);
 
             if (player != null)
             {
-                _repo.Delete(player);
-                await _repo.SaveChangeAsync();
+                _crud.Delete(player);
+                await _crud.SaveChangeAsync();
                 return Ok(player);
             }
 

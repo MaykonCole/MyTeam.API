@@ -14,6 +14,8 @@ using AutoMapper;
 using System.Reflection;
 using System.IO;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Service.Interface;
+using Service.Repository;
 
 namespace MyTeam.API
 {
@@ -40,6 +42,15 @@ namespace MyTeam.API
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddScoped<IRepository, Repository>();
+            services.AddScoped<ICrud, CrudRepository>();
+            services.AddScoped<IGame, GameRepository>();
+            services.AddScoped<ITeam, TeamRepository>();
+            services.AddScoped<IPlayer, PlayerRepository>();
+            services.AddScoped<IUser, UserRepository>();
+            services.AddScoped<IPlayerApp, PlayerAppRepository>();
+
+
+
 
 
             // Configuracao de Versionamento da API

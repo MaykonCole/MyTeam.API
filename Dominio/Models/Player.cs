@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,7 @@ namespace Dominio.Models
     {
         public Player(){}
 
-        public Player(int id, string nome, string psn, string celular, DateTime dataNascimento, string perfilPlayer, string posicaoP, string posicaoA, int? numero, string fotoURL, int? timeId)
+        public Player(int id, string nome, string psn, string celular, DateTime dataNascimento, string perfilPlayer, string posicaoP, string posicaoA, int? numero, int? userId, int? timeId)
         {
             Id = id;
             Nome = nome;
@@ -25,7 +26,7 @@ namespace Dominio.Models
             PosicaoP = posicaoP;
             PosicaoA = posicaoA;
             Numero = numero;
-            FotoURL = fotoURL;
+            UserId = userId;
             TeamId = timeId;
 
         }
@@ -65,9 +66,14 @@ namespace Dominio.Models
         public string? PosicaoA { get; set; }
         public int? Numero { get; set; }
         public string? FotoURL { get; set; }
+
+        public int? UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public virtual User User { get; set; }
         public int? TeamId { get; set; }
 
-        public Team Team { get; set; }
+        public virtual Team Team { get; set; }
 
        
     }

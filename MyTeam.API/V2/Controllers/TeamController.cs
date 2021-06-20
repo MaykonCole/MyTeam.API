@@ -7,6 +7,7 @@ using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Service.Interface;
 
 namespace MyTeam.API.V2.Controllers
 {
@@ -19,17 +20,19 @@ namespace MyTeam.API.V2.Controllers
     [ApiController]
     public class TeamController : ControllerBase
     {
-      
-        private readonly IRepository _repo;
+        private readonly ICrud _crud;
+        private readonly ITeam _repo;
+
 
         /// <summary>
         /// 
         /// </summary>
+        ///  /// <param name="crud"></param>
         /// <param name="repo"></param>
-        public TeamController( IRepository repo)
+        public TeamController(ICrud crud, ITeam repo)
         {
-           
             _repo = repo;
+            _crud = crud;
         }
 
       
@@ -112,8 +115,8 @@ namespace MyTeam.API.V2.Controllers
 
                     if (validaEscudo == null)
                     {
-                        _repo.Add(time);
-                        await _repo.SaveChangeAsync();
+                        _crud.Add(time);
+                        await _crud.SaveChangeAsync();
                         return Ok("Time adicionado com sucesso.");
                     }
                     else
@@ -143,8 +146,8 @@ namespace MyTeam.API.V2.Controllers
 
             if (validatime != null)
             {
-                _repo.Update(time);
-               await _repo.SaveChangeAsync();
+                _crud.Update(time);
+               await _crud.SaveChangeAsync();
                 return Ok("Time atualizado com sucesso.");
             }
 
@@ -166,8 +169,8 @@ namespace MyTeam.API.V2.Controllers
 
             if (time != null)
             {
-                _repo.Delete(time);
-                await _repo.SaveChangeAsync();
+                _crud.Delete(time);
+                await _crud.SaveChangeAsync();
                 return Ok("Time excluido com sucesso.");
             }
 
@@ -186,8 +189,8 @@ namespace MyTeam.API.V2.Controllers
 
             if (time != null)
             {
-                _repo.Delete(time);
-                await _repo.SaveChangeAsync();
+                _crud.Delete(time);
+                await _crud.SaveChangeAsync();
                 return Ok("Time excluido com sucesso.");
             }
 

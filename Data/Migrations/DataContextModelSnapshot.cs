@@ -78,9 +78,9 @@ namespace Data.Migrations
                             Id = 1,
                             TeamId = 1,
                             adversario = "Tombense",
-                            data = "06-05-2021",
-                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 376, DateTimeKind.Local).AddTicks(7205),
-                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 376, DateTimeKind.Local).AddTicks(7221),
+                            data = "18-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 214, DateTimeKind.Local).AddTicks(6198),
+                            dataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 214, DateTimeKind.Local).AddTicks(6212),
                             dtAdversario = "Zezinho",
                             dtCadastro = "Maykon",
                             horario = "16:30",
@@ -93,9 +93,9 @@ namespace Data.Migrations
                             Id = 2,
                             TeamId = 1,
                             adversario = "America",
-                            data = "05-05-2021",
-                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(6977),
-                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(6980),
+                            data = "17-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6120),
+                            dataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6122),
                             dtAdversario = "Lisca",
                             dtCadastro = "Isabela",
                             horario = "22:00",
@@ -108,9 +108,9 @@ namespace Data.Migrations
                             Id = 3,
                             TeamId = 1,
                             adversario = "Cruzeiro",
-                            data = "05-05-2021",
-                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7139),
-                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7140),
+                            data = "17-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6265),
+                            dataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6267),
                             dtAdversario = "Felipe",
                             dtCadastro = "Ramiro",
                             horario = "16:00",
@@ -123,9 +123,9 @@ namespace Data.Migrations
                             Id = 4,
                             TeamId = 2,
                             adversario = "Tombense",
-                            data = "09-05-2021",
-                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7164),
-                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7166),
+                            data = "21-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6289),
+                            dataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6291),
                             dtAdversario = "Zezinho",
                             dtCadastro = "Maykon",
                             horario = "16:30",
@@ -138,9 +138,9 @@ namespace Data.Migrations
                             Id = 5,
                             TeamId = 2,
                             adversario = "America",
-                            data = "07-05-2021",
-                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7187),
-                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7188),
+                            data = "19-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6311),
+                            dataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6313),
                             dtAdversario = "Lisca",
                             dtCadastro = "Isabela",
                             horario = "22:00",
@@ -153,9 +153,9 @@ namespace Data.Migrations
                             Id = 6,
                             TeamId = 2,
                             adversario = "Cruzeiro",
-                            data = "07-05-2021",
-                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7225),
-                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7227),
+                            data = "19-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6340),
+                            dataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6342),
                             dtAdversario = "Felipe",
                             dtCadastro = "Ramiro",
                             horario = "16:00",
@@ -168,9 +168,9 @@ namespace Data.Migrations
                             Id = 7,
                             TeamId = 3,
                             adversario = "Tombense",
-                            data = "06-05-2021",
-                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7246),
-                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7248),
+                            data = "18-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6363),
+                            dataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6365),
                             dtAdversario = "Zezinho",
                             dtCadastro = "Maykon",
                             horario = "16:30",
@@ -183,9 +183,9 @@ namespace Data.Migrations
                             Id = 8,
                             TeamId = 3,
                             adversario = "America",
-                            data = "08-05-2021",
-                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7267),
-                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7269),
+                            data = "20-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6385),
+                            dataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6387),
                             dtAdversario = "Lisca",
                             dtCadastro = "Isabela",
                             horario = "22:00",
@@ -198,9 +198,9 @@ namespace Data.Migrations
                             Id = 9,
                             TeamId = 3,
                             adversario = "Cruzeiro",
-                            data = "08-05-2021",
-                            dataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7289),
-                            dataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 377, DateTimeKind.Local).AddTicks(7291),
+                            data = "20-05-2021",
+                            dataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6406),
+                            dataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(6408),
                             dtAdversario = "Felipe",
                             dtCadastro = "Ramiro",
                             horario = "16:00",
@@ -265,9 +265,16 @@ namespace Data.Migrations
                     b.Property<int?>("TeamId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("UserId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
                     b.HasIndex("TeamId");
+
+                    b.HasIndex("UserId")
+                        .IsUnique()
+                        .HasFilter("[UserId] IS NOT NULL");
 
                     b.ToTable("Players");
 
@@ -276,10 +283,9 @@ namespace Data.Migrations
                         {
                             Id = 1,
                             Celular = "31993712719",
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(8974),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(8960),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 216, DateTimeKind.Local).AddTicks(9119),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 216, DateTimeKind.Local).AddTicks(9105),
                             DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoURL = "fotomaykon.png",
                             Nome = "Maykon",
                             Numero = 13,
                             PerfilPlayer = "Jogador",
@@ -293,10 +299,9 @@ namespace Data.Migrations
                         {
                             Id = 2,
                             Celular = "11978653211",
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9604),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9581),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(86),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(76),
                             DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoURL = "fotosamuel.png",
                             Nome = "Samuel",
                             Numero = 7,
                             PerfilPlayer = "Jogador",
@@ -310,10 +315,9 @@ namespace Data.Migrations
                         {
                             Id = 3,
                             Celular = "44967543245",
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9813),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9809),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(291),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(288),
                             DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoURL = "fotocelio.png",
                             Nome = "Celio",
                             Numero = 99,
                             PerfilPlayer = "DT",
@@ -327,10 +331,9 @@ namespace Data.Migrations
                         {
                             Id = 4,
                             Celular = "31993122719",
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9835),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9832),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(308),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(306),
                             DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoURL = "fotojose.png",
                             Nome = "Jose",
                             Numero = 3,
                             PerfilPlayer = "DT",
@@ -344,10 +347,9 @@ namespace Data.Migrations
                         {
                             Id = 5,
                             Celular = "11978653211",
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9849),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9847),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(322),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(319),
                             DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoURL = "fotomauricio.png",
                             Nome = "Mauricio",
                             Numero = 4,
                             PerfilPlayer = "Jogador",
@@ -361,10 +363,9 @@ namespace Data.Migrations
                         {
                             Id = 6,
                             Celular = "44967542145",
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9873),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9870),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(345),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(343),
                             DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoURL = "fotofernando.png",
                             Nome = "Fernando",
                             Numero = 6,
                             PerfilPlayer = "Jogador",
@@ -378,10 +379,9 @@ namespace Data.Migrations
                         {
                             Id = 7,
                             Celular = "31993154719",
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9887),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9884),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(358),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(356),
                             DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoURL = "fotoadam.png",
                             Nome = "Adam",
                             Numero = 2,
                             PerfilPlayer = "Jogador",
@@ -395,10 +395,9 @@ namespace Data.Migrations
                         {
                             Id = 8,
                             Celular = "11978113211",
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9900),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9898),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(372),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(370),
                             DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoURL = "fotoemerson.png",
                             Nome = "Emerson",
                             Numero = 5,
                             PerfilPlayer = "DT",
@@ -412,10 +411,9 @@ namespace Data.Migrations
                         {
                             Id = 9,
                             Celular = "44961242145",
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9913),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 379, DateTimeKind.Local).AddTicks(9911),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(385),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 218, DateTimeKind.Local).AddTicks(383),
                             DataNascimento = new DateTime(1993, 5, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            FotoURL = "fotojullius.png",
                             Nome = "Jullius",
                             Numero = 9,
                             PerfilPlayer = "Jogador",
@@ -499,8 +497,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = 1,
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 367, DateTimeKind.Local).AddTicks(6875),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 372, DateTimeKind.Local).AddTicks(4633),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 203, DateTimeKind.Local).AddTicks(4447),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 210, DateTimeKind.Local).AddTicks(3861),
                             DataFundacao = new DateTime(2020, 5, 17, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GamePes = true,
                             LinkEscudo = "link.huntersx.jpg",
@@ -510,8 +508,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = 2,
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2450),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2692),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 211, DateTimeKind.Local).AddTicks(1881),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 211, DateTimeKind.Local).AddTicks(2041),
                             DataFundacao = new DateTime(2019, 1, 8, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GamePes = false,
                             LinkEscudo = "link.bleuz.jpg",
@@ -521,8 +519,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = 3,
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2785),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2808),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 211, DateTimeKind.Local).AddTicks(2141),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 211, DateTimeKind.Local).AddTicks(2163),
                             DataFundacao = new DateTime(2021, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GamePes = true,
                             LinkEscudo = "link.mastermaq.jpg",
@@ -532,8 +530,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = 4,
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2814),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2827),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 211, DateTimeKind.Local).AddTicks(2169),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 211, DateTimeKind.Local).AddTicks(2181),
                             DataFundacao = new DateTime(1924, 1, 13, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GamePes = false,
                             LinkEscudo = "cruzeirocaiu.jpg",
@@ -543,8 +541,8 @@ namespace Data.Migrations
                         new
                         {
                             Id = 5,
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2832),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 373, DateTimeKind.Local).AddTicks(2842),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 211, DateTimeKind.Local).AddTicks(2186),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 211, DateTimeKind.Local).AddTicks(2196),
                             DataFundacao = new DateTime(1908, 3, 25, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             GamePes = true,
                             LinkEscudo = "galaodamassa.jpg",
@@ -579,6 +577,9 @@ namespace Data.Migrations
                     b.Property<int?>("PlayerId")
                         .HasColumnType("int");
 
+                    b.Property<bool>("ResponsavelTime")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Senha")
                         .IsRequired()
                         .HasColumnType("nvarchar(20)")
@@ -586,37 +587,38 @@ namespace Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("PlayerId");
-
                     b.ToTable("Users");
 
                     b.HasData(
                         new
                         {
                             Id = 1,
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(702),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(688),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(9523),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 215, DateTimeKind.Local).AddTicks(9510),
                             Email = "maykontaiorpm@gmail.com",
                             Login = "Maykon1993",
-                            Senha = "teste@123"
+                            ResponsavelTime = true,
+                            Senha = "123456"
                         },
                         new
                         {
                             Id = 2,
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(4572),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(4559),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 216, DateTimeKind.Local).AddTicks(4390),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 216, DateTimeKind.Local).AddTicks(4377),
                             Email = "belbelm@gmail.com",
                             Login = "belcastroic",
-                            Senha = "teste@123"
+                            ResponsavelTime = false,
+                            Senha = "123456"
                         },
                         new
                         {
                             Id = 3,
-                            DataAtualizacao = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(4642),
-                            DataCadastro = new DateTime(2021, 5, 5, 11, 13, 56, 378, DateTimeKind.Local).AddTicks(4639),
+                            DataAtualizacao = new DateTime(2021, 5, 17, 9, 34, 20, 216, DateTimeKind.Local).AddTicks(4461),
+                            DataCadastro = new DateTime(2021, 5, 17, 9, 34, 20, 216, DateTimeKind.Local).AddTicks(4459),
                             Email = "santacruz@gmail.com",
                             Login = "santacruzpe451",
-                            Senha = "teste@123"
+                            ResponsavelTime = false,
+                            Senha = "123456"
                         });
                 });
 
@@ -634,13 +636,10 @@ namespace Data.Migrations
                     b.HasOne("Dominio.Models.Team", "Team")
                         .WithMany("Players")
                         .HasForeignKey("TeamId");
-                });
 
-            modelBuilder.Entity("Dominio.Models.User", b =>
-                {
-                    b.HasOne("Dominio.Models.Player", "Player")
-                        .WithMany()
-                        .HasForeignKey("PlayerId");
+                    b.HasOne("Dominio.Models.User", "User")
+                        .WithOne("Player")
+                        .HasForeignKey("Dominio.Models.Player", "UserId");
                 });
 #pragma warning restore 612, 618
         }

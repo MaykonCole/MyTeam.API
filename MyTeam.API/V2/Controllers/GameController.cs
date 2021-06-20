@@ -9,6 +9,7 @@ using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Service.Interface;
 
 namespace MyTeam.API.V2.Controllers
 {
@@ -23,17 +24,20 @@ namespace MyTeam.API.V2.Controllers
     public class GameController : ControllerBase
     {
 
-        private readonly IRepository _repo;
+        private readonly ICrud _crud;
+        private readonly IGame _repo;
         private readonly IMapper _mapper;
 
 
         /// <summary>
         /// 
         /// </summary>
+        ///  /// <param name="crud"></param>
         /// <param name="repo"></param>
         /// <param name="mapper"></param>
-        public GameController(IRepository repo, IMapper mapper)
+        public GameController(ICrud crud, IGame repo, IMapper mapper)
         {
+            _crud = crud;
             _repo = repo;
             _mapper = mapper;
 
@@ -73,8 +77,8 @@ namespace MyTeam.API.V2.Controllers
         {
             if (game != null)
             {
-                _repo.Add(game);
-                await _repo.SaveChangeAsync();
+                _crud.Add(game);
+                await _crud.SaveChangeAsync();
                 return Ok("Partida contra o clube " + game.adversario + " cadastrada com sucesso.");
 
             }
@@ -100,8 +104,8 @@ namespace MyTeam.API.V2.Controllers
 
                 if (validaData != null)
                 {
-                    _repo.Update(game);
-                    await _repo.SaveChangeAsync();
+                    _crud.Update(game);
+                    await _crud.SaveChangeAsync();
                     return Ok("Partida atualizada com sucesso.");
                 }
                 else
@@ -130,8 +134,8 @@ namespace MyTeam.API.V2.Controllers
             {
                 if (game != null)
                 {
-                    _repo.Delete(game);
-                    await _repo.SaveChangeAsync();
+                    _crud.Delete(game);
+                    await _crud.SaveChangeAsync();
                     return Ok("Partida excluida com sucesso");
                 }
             }

@@ -9,6 +9,7 @@ using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Service.Interface;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,17 +25,20 @@ namespace MyTeam.API.V1.Controllers
     [ApiController]
     public class PlayerAppController : ControllerBase
     {
-        private readonly IRepository _repo;
+        private readonly ICrud _crud;
+        private readonly IPlayerApp _playerAppRep;
         private readonly IMapper _mapper;
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="repo"></param>
+        /// <param name="crud"></param>
+        /// <param name="playerapprep"></param>
         /// <param name="mapper"></param>
-        public PlayerAppController( IRepository repo, IMapper mapper)
+        public PlayerAppController(ICrud crud, IPlayerApp playerapprep, IMapper mapper)
         {
-            _repo = repo;
+            _crud = crud;
+            _playerAppRep = playerapprep;
             _mapper = mapper;
 
         }
@@ -47,13 +51,13 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            //var players = await _repo.BuscaPlayersApp();
+            //var players = await _playerAppRep.BuscaPlayersApp();
 
           // var playersdto = _mapper.Map<IEnumerable<PlayerDto>>(players);
 
 
 
-                return Ok(await _repo.BuscaPlayersApp());
+                return Ok(await _playerAppRep.BuscaPlayersApp());
         }
 
         /// <summary>
@@ -69,8 +73,8 @@ namespace MyTeam.API.V1.Controllers
                         player.Nome = player.Nome.ToLower();
                         player.Psn = player.Psn.ToLower();
                         player.Posicao = player.Posicao.ToLower();
-                        _repo.Add(player);
-                        await _repo.SaveChangeAsync();
+                        _crud.Add(player);
+                        await _crud.SaveChangeAsync();
                         return Ok(player.Nome + " cadastrado com sucesso.");
                   
             }
@@ -87,20 +91,20 @@ namespace MyTeam.API.V1.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, PlayerApp player)
         {
-            var validaplayer = await _repo.BuscaPlayerAppPorId(id);
+            var validaplayer = await _playerAppRep.BuscaPlayerAppPorId(id);
 
             if (validaplayer != null)
             {
-                var validaNome = await _repo.BuscaPlayerAppNome(player.Nome);
+                var validaNome = await _playerAppRep.BuscaPlayerAppNome(player.Nome);
 
                 if (validaNome == null || validaplayer.Nome == player.Nome)
                 {
-                    var validaPsn = await _repo.BuscaPlayerAppPorPsn(player.Psn);
+                    var validaPsn = await _playerAppRep.BuscaPlayerAppPorPsn(player.Psn);
 
                     if (validaPsn == null || validaplayer.Psn == player.Psn)
                     {
-                        _repo.Update(player);
-                        await _repo.SaveChangeAsync();
+                        _crud.Update(player);
+                        await _crud.SaveChangeAsync();
                         return Created($"/api/player/{player.Id}", player);
                     }
                     else
@@ -126,14 +130,14 @@ namespace MyTeam.API.V1.Controllers
         [HttpDelete("excluirplayerporid/{id}")]
         public async Task<IActionResult> DeletePorId(int id)
         {
-            var player = await _repo.BuscaPlayerAppPorId(id);
+            var player = await _playerAppRep.BuscaPlayerAppPorId(id);
 
 
             if (player != null)
             {
-                _repo.Delete(player);
-                await _repo.SaveChangeAsync();
-                return Ok(await _repo.BuscaPlayersApp());
+                _crud.Delete(player);
+                await _crud.SaveChangeAsync();
+                return Ok(await _playerAppRep.BuscaPlayersApp());
             }
 
             return BadRequest("Player não encontrado!");
@@ -149,13 +153,13 @@ namespace MyTeam.API.V1.Controllers
         //public async Task<IActionResult> DeletePorNome(string nome)
         //{
 
-        //    var player = await _repo.BuscaPlayerAppNome(nome);
+        //    var player = await _playerAppRep.BuscaPlayerAppNome(nome);
 
         //    if (player != null)
         //    {
-        //        _repo.Delete(player);
-        //        await _repo.SaveChangeAsync();
-        //        return Ok(await _repo.BuscaPlayersApp());
+        //        _playerAppRep.Delete(player);
+        //        await _playerAppRep.SaveChangeAsync();
+        //        return Ok(await _playerAppRep.BuscaPlayersApp());
         //    }
 
         //    return BadRequest("Player não encontrado!");
@@ -170,7 +174,7 @@ namespace MyTeam.API.V1.Controllers
         //[HttpGet("{id:int}")]
         //public async Task<IActionResult> GetPorId(int id)
         //{
-        //    var player = await _repo.BuscaPlayerPorId(id);
+        //    var player = await _playerAppRep.BuscaPlayerPorId(id);
 
         //    if (player == null) return BadRequest("Player com ID " + id + " não localizado.");
 
@@ -189,7 +193,7 @@ namespace MyTeam.API.V1.Controllers
         //[HttpGet("pornome/{nome}")]
         //public async Task<IActionResult> GetPorNomeQueryString(string nome)
         //{
-        //    var player = await _repo.BuscaPlayerNome(nome);
+        //    var player = await _playerAppRep.BuscaPlayerNome(nome);
 
         //    if (player == null) return BadRequest("Player " + nome + " não localizado.");
 
@@ -206,7 +210,7 @@ namespace MyTeam.API.V1.Controllers
         //[HttpGet("porpsn/{psn}")]
         //public async Task<IActionResult> GetPorPsnQueryString(string psn)
         //{
-        //    var player = await _repo.BuscaPlayerPorPsn(psn);
+        //    var player = await _playerAppRep.BuscaPlayerPorPsn(psn);
 
         //    if (player == null) return BadRequest("PSN " + psn + " não localizado.");
 
@@ -231,20 +235,20 @@ namespace MyTeam.API.V1.Controllers
         //public async Task<IActionResult> Patch(int id, Player player)
         //{
 
-        //    var validaplayer = await _repo.BuscaPlayerPorId(id);
+        //    var validaplayer = await _playerAppRep.BuscaPlayerPorId(id);
 
         //    if (validaplayer != null)
         //    {
-        //        var validaNome = await _repo.BuscaPlayerNome(player.Nome);
+        //        var validaNome = await _playerAppRep.BuscaPlayerNome(player.Nome);
 
         //        if (validaNome == null)
         //        {
-        //            var validaPsn = await _repo.BuscaPlayerPorPsn(player.Psn);
+        //            var validaPsn = await _playerAppRep.BuscaPlayerPorPsn(player.Psn);
 
         //            if (validaPsn == null)
         //            {
-        //                _repo.Update(player);
-        //                await _repo.SaveChangeAsync();
+        //                _playerAppRep.Update(player);
+        //                await _playerAppRep.SaveChangeAsync();
         //                return Created($"/api/player/{player.Id}", player);
         //            }
         //            else

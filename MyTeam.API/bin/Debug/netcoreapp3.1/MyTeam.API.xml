@@ -9,11 +9,12 @@
             Versao 1 do controlador de Players
             </summary>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.PlayerAppController.#ctor(Data.Context.IRepository,AutoMapper.IMapper)">
+        <member name="M:MyTeam.API.V1.Controllers.PlayerAppController.#ctor(Service.Interface.ICrud,Service.Interface.IPlayerApp,AutoMapper.IMapper)">
             <summary>
             
             </summary>
-            <param name="repo"></param>
+            <param name="crud"></param>
+            <param name="playerapprep"></param>
             <param name="mapper"></param>
         </member>
         <member name="M:MyTeam.API.V1.Controllers.PlayerAppController.Get">
@@ -42,11 +43,12 @@
             Versao 1 do controlador de Players
             </summary>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.PlayerController.#ctor(Data.Context.IRepository,AutoMapper.IMapper)">
+        <member name="M:MyTeam.API.V1.Controllers.PlayerController.#ctor(Service.Interface.ICrud,Service.Interface.IPlayer,AutoMapper.IMapper)">
             <summary>
             
             </summary>
-            <param name="repo"></param>
+            /// <param name="crud"></param>
+            <param name="playerrep"></param>
             <param name="mapper"></param>
         </member>
         <member name="M:MyTeam.API.V1.Controllers.PlayerController.Get(Data.Helpers.PageParams)">
@@ -118,11 +120,12 @@
             Versao 1 do controlador de Users
             </summary>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.UserController.#ctor(Data.Context.IRepository)">
+        <member name="M:MyTeam.API.V1.Controllers.UserController.#ctor(Service.Interface.IUser,Service.Interface.ICrud)">
             <summary>
             
             </summary>
-            <param name="repo"></param>
+            /// /// <param name="crud"></param>
+            <param name="userrep"></param>
         </member>
         <member name="M:MyTeam.API.V1.Controllers.UserController.Get">
             <summary>
@@ -163,10 +166,11 @@
             Versao 2 do controlador de Games
             </summary>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.GameController.#ctor(Data.Context.IRepository,AutoMapper.IMapper)">
+        <member name="M:MyTeam.API.V2.Controllers.GameController.#ctor(Service.Interface.ICrud,Service.Interface.IGame,AutoMapper.IMapper)">
             <summary>
             
             </summary>
+             /// <param name="crud"></param>
             <param name="repo"></param>
             <param name="mapper"></param>
         </member>
@@ -197,10 +201,11 @@
             Versao 2 do controlador de Times
             </summary>
         </member>
-        <member name="M:MyTeam.API.V2.Controllers.TeamController.#ctor(Data.Context.IRepository)">
+        <member name="M:MyTeam.API.V2.Controllers.TeamController.#ctor(Service.Interface.ICrud,Service.Interface.ITeam)">
             <summary>
             
             </summary>
+             /// <param name="crud"></param>
             <param name="repo"></param>
         </member>
         <member name="M:MyTeam.API.V2.Controllers.TeamController.Get(System.Boolean)">

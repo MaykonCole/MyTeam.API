@@ -14,12 +14,13 @@ namespace Dominio.Models
 
         }
 
-        public User(int id, string login, string senha, string email)
+        public User(int id, string login, string senha, string email, bool responsavel)
         {
             Id = id;
             Login = login;
             Senha = senha;
             Email = email;
+            ResponsavelTime = responsavel;
           
         }
 
@@ -46,6 +47,8 @@ namespace Dominio.Models
         public DateTime DataAtualizacao{ get; set; } = DateTime.Now;
         public int? PlayerId { get; set; }
         public Player Player { get; set; }
+
+        public bool ResponsavelTime { get; set; }
 
 
     }

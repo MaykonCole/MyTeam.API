@@ -73,29 +73,28 @@ namespace Data.Context
             builder.Entity<User>()
            .HasData(new List<User>()
            {
-                   new User (1, "Maykon1993", "teste@123", "maykontaiorpm@gmail.com" ),
-                   new User (2, "belcastroic", "teste@123", "belbelm@gmail.com" ),
-                   new User (3, "santacruzpe451", "teste@123", "santacruz@gmail.com" ),
+                   new User (1, "Maykon1993", "123456", "maykontaiorpm@gmail.com", true),
+                   new User (2, "belcastroic", "123456", "belbelm@gmail.com", false ),
+                   new User (3, "santacruzpe451", "123456", "santacruz@gmail.com", false ),
 
            }) ;
 
             builder.Entity<Player>()
                .HasData(new List<Player>()
                {
-                   new Player (1, "Maykon", "Maykon1993", "31993712719",  DateTime.Parse("01/05/1993"), "Jogador",  "Meia Atacante", "Volante", 13, "fotomaykon.png", 1),
-                   new Player (2,  "Samuel", "santacruzpe", "11978653211",  DateTime.Parse("01/05/1993"), "Jogador",  "Meia Atacante", "Volante",7, "fotosamuel.png", 1),
-                   new Player (3, "Celio", "Celio_Shadow_14", "44967543245",  DateTime.Parse("01/05/1993"), "DT", "Atacante", "Volante",99, "fotocelio.png", 1),
+                   new Player (1, "Maykon", "Maykon1993", "31993712719",  DateTime.Parse("01/05/1993"), "Jogador",  "Meia Atacante", "Volante", 13, null, 1),
+                   new Player (2,  "Samuel", "santacruzpe", "11978653211",  DateTime.Parse("01/05/1993"), "Jogador",  "Meia Atacante", "Volante",7, null, 1),
+                   new Player (3, "Celio", "Celio_Shadow_14", "44967543245",  DateTime.Parse("01/05/1993"), "DT", "Atacante", "Volante",99, null, 1),
 
 
-                   new Player (4, "Jose", "joselito1970", "31993122719",  DateTime.Parse("01/05/1993"), "DT",  "Atacante", "Volante",3, "fotojose.png", 2),
-                   new Player (5, "Mauricio", "maumau", "11978653211",  DateTime.Parse("01/05/1993"), "Jogador", "Goleiro", "Volante",4, "fotomauricio.png", 2),
-                   new Player (6, "Fernando", "fernando123", "44967542145",  DateTime.Parse("01/05/1993"), "Jogador",  "Meia Atacante", "Lateral",6, "fotofernando.png", 2),
+                   new Player (4, "Jose", "joselito1970", "31993122719",  DateTime.Parse("01/05/1993"), "DT",  "Atacante", "Volante",3, null, 2),
+                   new Player (5, "Mauricio", "maumau", "11978653211",  DateTime.Parse("01/05/1993"), "Jogador", "Goleiro", "Volante",4, null, 2),
+                   new Player (6, "Fernando", "fernando123", "44967542145",  DateTime.Parse("01/05/1993"), "Jogador",  "Meia Atacante", "Lateral",6, null ,2),
 
 
-                    new Player (7, "Adam", "adao", "31993154719",  DateTime.Parse("01/05/1993"), "Jogador", "Zagueiro", "Lateral",2, "fotoadam.png", 3),
-                    new Player (8, "Emerson", "emer", "11978113211",  DateTime.Parse("01/05/1993"), "DT",  "Volante", "Atacante",5, "fotoemerson.png", 3),
-                    new Player (9, "Jullius", "cachaca", "44961242145",  DateTime.Parse("01/05/1993"), "Jogador", "Atacante", "agueiro",9, "fotojullius.png", 3),
-
+                    new Player (7, "Adam", "adao", "31993154719",  DateTime.Parse("01/05/1993"), "Jogador", "Zagueiro", "Lateral",2, null, 3),
+                    new Player (8, "Emerson", "emer", "11978113211",  DateTime.Parse("01/05/1993"), "DT",  "Volante", "Atacante",5, null, 3),
+                    new Player (9, "Jullius", "cachaca", "44961242145",  DateTime.Parse("01/05/1993"), "Jogador", "Atacante", "agueiro",9, null, 3),
 
 
                });

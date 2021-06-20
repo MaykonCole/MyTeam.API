@@ -256,6 +256,14 @@
     <Compile Include="Migrations\20210505141357_campocelular.designer.cs">
       <DependentUpon>20210505141357_campocelular.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210514194902_UserId.cs" />
+    <Compile Include="Migrations\20210514194902_UserId.designer.cs">
+      <DependentUpon>20210514194902_UserId.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\20210517123421_EResponsavelTime.cs" />
+    <Compile Include="Migrations\20210517123421_EResponsavelTime.designer.cs">
+      <DependentUpon>20210517123421_EResponsavelTime.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DataContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
