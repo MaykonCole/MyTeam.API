@@ -11,7 +11,7 @@ namespace Dominio.Models
 {
 
   
-    public class Player
+    public class Player : Base
     {
         public Player(){}
 
@@ -31,30 +31,19 @@ namespace Dominio.Models
 
         }
 
-        [Key]
-        public int Id { get; set; }
         [StringLength(20, MinimumLength = 2, ErrorMessage = "Nome deve conter no minimo 2 caracteres")]
         [Required]
         public string Nome { get; set; }
         [StringLength(20, MinimumLength = 2, ErrorMessage = "PSN deve conter no minimo 2 caracteres")]
         [Required]
         public string Psn { get; set; }
-
         [DataType(DataType.PhoneNumber)]
         [StringLength(20, MinimumLength = 7, ErrorMessage = "Celular deve ter no minimo 7 caracteres")]
         [Required]
         public string Celular { get; set; }
-
-        [DataType(DataType.DateTime)]
-        public DateTime DataCadastro { get; set; } = DateTime.Now;
-
-        [DataType(DataType.DateTime)]
-        public DateTime? DataAtualizacao { get; set; } = DateTime.Now;
-
         [DataType(DataType.Date)]
         [Required]
         public DateTime DataNascimento { get; set; }
-
         [Required]
         public string PerfilPlayer { get; set; }
 
@@ -66,7 +55,6 @@ namespace Dominio.Models
         public string? PosicaoA { get; set; }
         public int? Numero { get; set; }
         public string? FotoURL { get; set; }
-
         public int? UserId { get; set; }
 
         [ForeignKey("UserId")]

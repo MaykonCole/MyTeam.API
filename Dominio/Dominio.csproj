@@ -79,6 +79,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dtos\PlayerDto.cs" />
+    <Compile Include="Dtos\User\UserDto.cs" />
+    <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Player.cs" />
     <Compile Include="Models\PlayerApp.cs" />
@@ -89,6 +91,11 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dtos\Game\" />
+    <Folder Include="Dtos\Player\" />
+    <Folder Include="Dtos\Team\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

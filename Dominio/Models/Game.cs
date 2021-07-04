@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Models
 {
-    public class Game
+    public class Game : Base
     {
         public Game()
         {
@@ -23,17 +23,12 @@ namespace Dominio.Models
             this.dtAdversario = dtAdversario;
             this.psnAdversario = psnAdversario;
             this.horario = horario;
-           
-        
             this.data = data;
             this.tipoJogo = tipoJogo;
             TeamId = idTeam;
         }
 
-        [Key]
-        public int Id { get; set; }
         public  String? dtCadastro { get; set; }
-
         [StringLength (20, MinimumLength =2, ErrorMessage ="Nome do time adversário deve conter no minimo 2 caracteres")]
         [Required]
         public  String adversario { get; set; }
@@ -43,18 +38,12 @@ namespace Dominio.Models
         [StringLength(20, MinimumLength = 2, ErrorMessage = "PSN do adversário deve conter no minimo 2 caracteres")]
         [Required]
         public  String psnAdversario { get; set; }
-
         [StringLength(5, MinimumLength = 5, ErrorMessage = "Horário deve conter os 5 caracteres. Ex: 20:00")]
         [Required]
         public  String horario { get; set; }
-
         [Required]
         public String data { get; set; }
         [DataType(DataType.DateTime)]
-        public DateTime dataAtualizacao { get; set; } = DateTime.Now;
-        [DataType(DataType.DateTime)]
-        public DateTime dataCadastro { get; set; } = DateTime.Now;
-      
         public  String? tipoJogo { get; set; }
         public int TeamId { get; set; }
         public Team Team { get; set; }

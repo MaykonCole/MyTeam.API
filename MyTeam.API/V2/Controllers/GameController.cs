@@ -20,6 +20,7 @@ namespace MyTeam.API.V2.Controllers
     [ApiVersion("2.0")]
     [Route("api/v{version:apiVersion}/[controller]")]
 
+    
     [ApiController]
     public class GameController : ControllerBase
     {
@@ -55,11 +56,12 @@ namespace MyTeam.API.V2.Controllers
             return Ok(await _repo.BuscaGamePorTime(id));
         }
 
-        /// <summary>
-        /// Método responsável para retornar todos as Partidas de um Time!
-        /// </summary>
-        /// <returns></returns>
-        ///GET: api/<GameController>
+ /// <summary>
+ /// 
+ /// </summary>
+ /// <param name="data"></param>
+ /// <param name="teamId"></param>
+ /// <returns></returns>
         [HttpGet("{data}/{teamId:int}")]
         public async Task<IActionResult> Get(string data, int teamId)
         {

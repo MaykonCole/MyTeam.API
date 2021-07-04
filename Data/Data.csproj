@@ -264,6 +264,10 @@
     <Compile Include="Migrations\20210517123421_EResponsavelTime.designer.cs">
       <DependentUpon>20210517123421_EResponsavelTime.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\20210704195445_Base.cs" />
+    <Compile Include="Migrations\20210704195445_Base.designer.cs">
+      <DependentUpon>20210704195445_Base.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\DataContextModelSnapshot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

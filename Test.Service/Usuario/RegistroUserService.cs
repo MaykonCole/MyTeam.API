@@ -44,8 +44,8 @@ namespace Test.Service.Usuario
                     Login = Faker.Name.FullName(),
                     Email = Faker.Internet.Email(),
                     Senha = Faker.RandomNumber.Next().ToString(),
-                    DataCadastro = DateTime.UtcNow,
-                    DataAtualizacao = DateTime.UtcNow,
+                    CriadoEm = DateTime.UtcNow,
+                    AtualizadoEm = DateTime.UtcNow,
                     ResponsavelTime = Id > 6 ? true : false
                 };
 
@@ -58,8 +58,8 @@ namespace Test.Service.Usuario
                 Login = Login,
                 Senha = Senha,
                 Email = Email,
-                DataCadastro = DataCadastro,
-                DataAtualizacao = DataAtualizacao,
+                CriadoEm = DataCadastro,
+                AtualizadoEm = DataAtualizacao,
                 ResponsavelTime = ResponsavelTime
             };
 

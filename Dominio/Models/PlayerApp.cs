@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Models
 {
-    public class PlayerApp
+    public class PlayerApp : Base
     {
         public PlayerApp()
         {
@@ -24,8 +24,6 @@ namespace Dominio.Models
           
         }
 
-        [Key]
-        public int Id { get; set; }
         [StringLength(20, MinimumLength = 2, ErrorMessage = "Nome deve conter no minimo 2 caracteres")]
         [Required]
         public string Nome { get; set; }
