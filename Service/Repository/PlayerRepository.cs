@@ -20,13 +20,10 @@ namespace Service.Repository
         public PlayerRepository(DataContext context, IMapper mapper)
         {
             _context = context;
-            _mapper = mapper;
-          
+          _mapper = mapper;
         }
 
-      
-
-        public async Task<PageList<PlayerDto>> BuscaPlayers(PageParams pageParams, bool incluirTime = false)
+        public async Task<PageList<Player>> BuscaPlayers(PageParams pageParams, bool incluirTime = false)
         {
 
             IQueryable<Player> query = _context.Players;
@@ -53,43 +50,41 @@ namespace Service.Repository
             {
                 query = query.Where(player => player.PlayerAtivo == (pageParams.PlayerAtivo != 0));
             }
+            
 
-            var playerdto = _mapper.Map<IQueryable<PlayerDto>>(query);
-
-            return await PageList<PlayerDto>.CreateAsync(playerdto, pageParams.PageNumber, pageParams.PageSize);
+            return await PageList<Player>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
 
-        public async Task<PlayerDto> BuscaPlayerNome(string nome)
+        public async Task<Player> BuscaPlayerPorNome(string nome)
         {
-            var player = _context.Players;
-
-            await player.AsNoTracking().FirstOrDefaultAsync(p => p.Nome.Equals(nome));
-
-            var playerdto = _mapper.Map<PlayerDto>(player);
-
-            return playerdto;
+           var players = _context.Players;
+           var player = await players.AsNoTracking().FirstOrDefaultAsync(p => p.Nome.Equals(nome));
+            if (player == null)
+                throw new Exception("Jogador com Nome " + nome + " não foi localizado.");
+            return player;
         }
 
         public async Task<PlayerDto> BuscaPlayerPorId(int id)
         {
-            var player = _context.Players;
+            var players = _context.Players;
 
-            await player.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+            var player = await players.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
+
+            if (player == null)
+                throw new Exception("Jogador com ID " + id + " não foi localizado.");
 
             var playerdto = _mapper.Map<PlayerDto>(player);
 
             return playerdto;
         }
 
-        public async Task<PlayerDto> BuscaPlayerPorPsn(string psn)
+        public async Task<Player> BuscaPlayerPorPsn(string psn)
         {
-            var player = _context.Players;
-
-            await player.AsNoTracking().FirstOrDefaultAsync(p => p.Nome.Equals(psn));
-
-            var playerdto = _mapper.Map<PlayerDto>(player);
-
-            return playerdto;
+            var players = _context.Players;
+            var player = await players.AsNoTracking().FirstOrDefaultAsync(p => p.Nome.Equals(psn));
+            if (player == null)
+                throw new Exception("Jogador com PSN " + psn + " não foi localizado.");
+            return player;
         }
     }
 }

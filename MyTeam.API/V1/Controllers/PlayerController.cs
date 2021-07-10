@@ -27,7 +27,6 @@ namespace MyTeam.API.V1.Controllers
     [ApiController]
     public class PlayerController : ControllerBase
     {
-
         private readonly ICrud _crud;
         private readonly IPlayer _playerRep;
         private readonly IMapper _mapper;
@@ -71,13 +70,15 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetPorId(int id)
         {
-            var player = await _playerRep.BuscaPlayerPorId(id);
-
-            if (player == null) return BadRequest("Player com ID " + id + " não localizado.");
-
-            var playerDto = _mapper.Map<PlayerDto>(player);
-
-            return Ok(playerDto);
+            try
+            {
+                var playerdto = await _playerRep.BuscaPlayerPorId(id);
+                return Ok(playerdto);
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
 
 
@@ -89,13 +90,19 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("pornome/{nome}")]
         public async Task<IActionResult> GetPorNomeQueryString(string nome)
         {
-            var player = await _playerRep.BuscaPlayerNome(nome);
-
-            if (player == null) return BadRequest("Player " + nome + " não localizado.");
-
-            var playerDto = _mapper.Map<PlayerDto>(player);
-
-            return Ok(playerDto);
+            try
+            {
+                //Busca o jogador
+                var player = await _playerRep.BuscaPlayerPorNome(nome);
+                // Mapeia o retorno para uma DTO
+                var playerDto = _mapper.Map<PlayerDto>(player);
+                // Retornar o PlayerDTO
+                return Ok(playerDto);
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
 
         /// <summary>
@@ -106,13 +113,19 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("porpsn/{psn}")]
         public async Task<IActionResult> GetPorPsnQueryString(string psn)
         {
-            var player = await _playerRep.BuscaPlayerPorPsn(psn);
-
-            if (player == null) return BadRequest("PSN " + psn + " não localizado.");
-
-            var playerDto = _mapper.Map<PlayerDto>(player);
-
-            return Ok(playerDto);
+            try
+            {
+                //Busca o jogador
+                var player = await _playerRep.BuscaPlayerPorPsn(psn);
+                // Mapeia o retorno para uma DTO
+                var playerDto = _mapper.Map<PlayerDto>(player);
+                // Retornar o PlayerDTO
+                return Ok(playerDto);
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
 
 
@@ -128,7 +141,7 @@ namespace MyTeam.API.V1.Controllers
             if (player != null) {
                 
 
-               var validaNome = await _playerRep.BuscaPlayerNome(player.Nome);
+               var validaNome = await _playerRep.BuscaPlayerPorNome(player.Nome);
 
                 if (validaNome == null)
                 {
@@ -166,7 +179,7 @@ namespace MyTeam.API.V1.Controllers
 
             if (validaplayer != null)
             {
-                var validaNome = await _playerRep.BuscaPlayerNome(player.Nome);
+                var validaNome = await _playerRep.BuscaPlayerPorNome(player.Nome);
 
                 if (validaNome == null || validaplayer.Nome == player.Nome)
                 {
@@ -197,7 +210,7 @@ namespace MyTeam.API.V1.Controllers
 
             if (validaplayer != null)
             {
-                var validaNome = await _playerRep.BuscaPlayerNome(player.Nome);
+                var validaNome = await _playerRep.BuscaPlayerPorNome(player.Nome);
 
                 if (validaNome == null)
                 {
@@ -243,7 +256,7 @@ namespace MyTeam.API.V1.Controllers
         [HttpDelete("excluirplayerpornome/{nome}")]
         public async Task<IActionResult> DeletePorNome(string nome)
         {
-            var player = await _playerRep.BuscaPlayerNome(nome);
+            var player = await _playerRep.BuscaPlayerPorNome(nome);
 
             if (player != null)
             {
