@@ -179,3 +179,6 @@ C:\Users\DevDesiger\source\repos\MyTeam\Service\obj\Debug\Service.csproj.CoreCom
 C:\Users\DevDesiger\source\repos\MyTeam\Service\obj\Debug\Service.csproj.CopyComplete
 C:\Users\DevDesiger\source\repos\MyTeam\Service\obj\Debug\Service.dll
 C:\Users\DevDesiger\source\repos\MyTeam\Service\obj\Debug\Service.pdb
+C:\Users\DevDesiger\source\repos\MyTeam\Service\bin\Debug\AutoMapper.dll
+C:\Users\DevDesiger\source\repos\MyTeam\Service\bin\Debug\AutoMapper.xml
+C:\Users\DevDesiger\source\repos\MyTeam\Service\bin\Debug\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

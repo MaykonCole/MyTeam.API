@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Dominio.Dtos.User
 {
-    public class UserDto
+    public class UserDtoUpdate
     {
-        public int Id { get; set; }
-        public string Login { get; set; }
+        public string Senha { get; set; }
         public string Email { get; set; }
+        public DateTime DataAtualizacao { get; set; } = DateTime.Now;
         public bool ResponsavelTime { get; set; }
     }
 }

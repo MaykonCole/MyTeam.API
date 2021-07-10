@@ -78,8 +78,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Dtos\PlayerDto.cs" />
+    <Compile Include="Dtos\Player\PlayerDto.cs" />
+    <Compile Include="Dtos\Player\PlayerDtoCreateResult.cs" />
+    <Compile Include="Dtos\Player\PlayerDtoCreate.cs" />
+    <Compile Include="Dtos\Player\PlayerDtoUpdate.cs" />
+    <Compile Include="Dtos\Player\PlayerDtoUpdateResult.cs" />
     <Compile Include="Dtos\User\UserDto.cs" />
+    <Compile Include="Dtos\User\UserDtoCreate.cs" />
+    <Compile Include="Dtos\User\UserDtoCreateResult.cs" />
+    <Compile Include="Dtos\User\UserDtoUpdate.cs" />
+    <Compile Include="Dtos\User\UserDtoUpdateResult.cs" />
     <Compile Include="Models\Base.cs" />
     <Compile Include="Models\Game.cs" />
     <Compile Include="Models\Player.cs" />
@@ -94,7 +102,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Dtos\Game\" />
-    <Folder Include="Dtos\Player\" />
     <Folder Include="Dtos\Team\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

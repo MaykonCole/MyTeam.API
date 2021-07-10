@@ -159,3 +159,5 @@ C:\Users\DevDesiger\source\repos\MyTeam\Test.Service\obj\Debug\net5.0\Test.Servi
 C:\Users\DevDesiger\source\repos\MyTeam\Test.Service\obj\Debug\net5.0\ref\Test.Service.dll
 C:\Users\DevDesiger\source\repos\MyTeam\Test.Service\obj\Debug\net5.0\Test.Service.pdb
 C:\Users\DevDesiger\source\repos\MyTeam\Test.Service\obj\Debug\net5.0\Test.Service.genruntimeconfig.cache
+C:\Users\DevDesiger\source\repos\MyTeam\Test.Service\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\DevDesiger\source\repos\MyTeam\Test.Service\bin\Debug\net5.0\AutoMapper.xml

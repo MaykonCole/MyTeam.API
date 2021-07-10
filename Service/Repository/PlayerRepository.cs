@@ -1,10 +1,11 @@
-﻿using Data.Context;
+﻿using AutoMapper;
+using Data.Context;
 using Data.Helpers;
+using Dominio.Dtos.Player;
 using Dominio.Models;
 using Microsoft.EntityFrameworkCore;
 using Service.Interface;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,19 +16,22 @@ namespace Service.Repository
     {
 
         private readonly DataContext _context;
-        public PlayerRepository(DataContext context)
+        private readonly IMapper _mapper;
+        public PlayerRepository(DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
+          
         }
 
-        public async Task<PageList<Player>> BuscaPlayers(PageParams pageParams, bool incluirTime = false)
+      
+
+        public async Task<PageList<PlayerDto>> BuscaPlayers(PageParams pageParams, bool incluirTime = false)
         {
 
             IQueryable<Player> query = _context.Players;
 
-
             query = query.AsNoTracking().OrderBy(u => u.Nome);
-
 
             if (incluirTime)
             {
@@ -50,37 +54,42 @@ namespace Service.Repository
                 query = query.Where(player => player.PlayerAtivo == (pageParams.PlayerAtivo != 0));
             }
 
+            var playerdto = _mapper.Map<IQueryable<PlayerDto>>(query);
 
-            return await PageList<Player>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
-
-            //return await query.ToListAsync();
+            return await PageList<PlayerDto>.CreateAsync(playerdto, pageParams.PageNumber, pageParams.PageSize);
         }
 
-        public async Task<Player> BuscaPlayerNome(string nome)
+        public async Task<PlayerDto> BuscaPlayerNome(string nome)
         {
-            IQueryable<Player> query = _context.Players;
+            var player = _context.Players;
 
-            query = query.AsNoTracking().Where(p => p.Nome.Equals(nome));
+            await player.AsNoTracking().FirstOrDefaultAsync(p => p.Nome.Equals(nome));
 
-            return await query.FirstOrDefaultAsync(p => p.Nome == nome);
+            var playerdto = _mapper.Map<PlayerDto>(player);
+
+            return playerdto;
         }
 
-        public async Task<Player> BuscaPlayerPorId(int id)
+        public async Task<PlayerDto> BuscaPlayerPorId(int id)
         {
-            IQueryable<Player> query = _context.Players;
+            var player = _context.Players;
 
-            query = query.AsNoTracking().OrderBy(p => p.Id).Where(p => p.Id == id);
+            await player.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
 
-            return await query.FirstOrDefaultAsync();
+            var playerdto = _mapper.Map<PlayerDto>(player);
+
+            return playerdto;
         }
 
-        public async Task<Player> BuscaPlayerPorPsn(string psn)
+        public async Task<PlayerDto> BuscaPlayerPorPsn(string psn)
         {
-            IQueryable<Player> query = _context.Players;
+            var player = _context.Players;
 
-            query = query.AsNoTracking().OrderBy(a => a.Psn).Where(p => p.Psn.Equals(psn));
+            await player.AsNoTracking().FirstOrDefaultAsync(p => p.Nome.Equals(psn));
 
-            return await query.FirstOrDefaultAsync();
+            var playerdto = _mapper.Map<PlayerDto>(player);
+
+            return playerdto;
         }
     }
 }

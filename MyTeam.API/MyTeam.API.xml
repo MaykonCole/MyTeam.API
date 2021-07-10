@@ -78,14 +78,14 @@
             <param name="psn"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.PlayerController.Post(Dominio.Models.Player)">
+        <member name="M:MyTeam.API.V1.Controllers.PlayerController.Post(Dominio.Dtos.Player.PlayerDtoCreate)">
             <summary>
             Método responsavel por adicionar um novo Player.
             </summary>
             <param name="player"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.PlayerController.Put(System.Int32,Dominio.Models.Player)">
+        <member name="M:MyTeam.API.V1.Controllers.PlayerController.Put(System.Int32,Dominio.Dtos.Player.PlayerDtoUpdate)">
             <summary>
             Método responsavel por atualizar um Player, de acordo o seu ID.
             </summary>
@@ -93,7 +93,7 @@
             <param name="player"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.PlayerController.Patch(System.Int32,Dominio.Models.Player)">
+        <member name="M:MyTeam.API.V1.Controllers.PlayerController.Patch(System.Int32,Dominio.Dtos.Player.PlayerDtoUpdate)">
             <summary>
             Método responsavel por atualizar um Player, de acordo o seu ID.
             </summary>

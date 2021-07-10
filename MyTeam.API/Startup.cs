@@ -13,6 +13,9 @@ using System.IO;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Service.Interface;
 using Service.Repository;
+using Dominio.Models;
+using Dominio.Dtos.Player;
+using MyTeam.API.AutoMapper;
 
 namespace MyTeam.API
 {
@@ -47,7 +50,7 @@ namespace MyTeam.API
             services.AddScoped<IPlayerApp, PlayerAppRepository>();
 
 
-
+            services.AddAutoMapper(typeof(MapperSetup));
 
 
             // Configuracao de Versionamento da API

@@ -1,4 +1,6 @@
 ﻿using Data.Helpers;
+using Dominio.Dtos;
+using Dominio.Dtos.Player;
 using Dominio.Models;
 using System;
 using System.Collections.Generic;
@@ -10,10 +12,10 @@ namespace Service.Interface
 {
     public interface IPlayer
     {
-        Task<PageList<Player>> BuscaPlayers(PageParams pageParams, bool incluirTime = false);
+        Task<PageList<PlayerDto>> BuscaPlayers(PageParams pageParams, bool incluirTime = false);
 
-        Task<Player> BuscaPlayerPorId(int id);
-        Task<Player> BuscaPlayerPorPsn(string psn);
-        Task<Player> BuscaPlayerNome(string nome);
+        Task<PlayerDto> BuscaPlayerPorId(int id);
+        Task<PlayerDto> BuscaPlayerPorPsn(string psn);
+        Task<PlayerDto> BuscaPlayerNome(string nome);
     }
 }

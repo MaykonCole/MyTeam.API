@@ -6,6 +6,7 @@ using AutoMapper;
 using Data.Context;
 using Data.Helpers;
 using Dominio.Dtos;
+using Dominio.Dtos.Player;
 using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -59,7 +60,7 @@ namespace MyTeam.API.V1.Controllers
 
             Response.AddPagination(players.AtualPagina, players.TamanhoPagina, players.ItemTotal, players.TotalPaginas);
 
-                return Ok(players);
+                return Ok(playersdto);
         }
 
         /// <summary>
@@ -73,7 +74,6 @@ namespace MyTeam.API.V1.Controllers
             var player = await _playerRep.BuscaPlayerPorId(id);
 
             if (player == null) return BadRequest("Player com ID " + id + " não localizado.");
-
 
             var playerDto = _mapper.Map<PlayerDto>(player);
 
@@ -123,7 +123,7 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="player"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Post(Player player)
+        public async Task<IActionResult> Post(PlayerDtoCreate player)
         {
             if (player != null) {
                 
@@ -160,7 +160,7 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="player"></param>
         /// <returns></returns>
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id, Player player)
+        public async Task<IActionResult> Put(int id, PlayerDtoUpdate player)
         {
             var validaplayer = await _playerRep.BuscaPlayerPorId(id);
 
@@ -170,26 +170,15 @@ namespace MyTeam.API.V1.Controllers
 
                 if (validaNome == null || validaplayer.Nome == player.Nome)
                 {
-                    var validaPsn = await _playerRep.BuscaPlayerPorPsn(player.Psn);
-
-                    if (validaPsn == null || validaplayer.Psn == player.Psn)
-
-                    {
                         _crud.Update(player);
                         await _crud.SaveChangeAsync();
                         return Ok("Player atualizado com sucesso.");
-                    }
-                    else
-                    {
-                        return Ok("Player já existe com esta PSN.");
-                    }
                 }
                 else
                 {
                     return Ok("Player já existe com este nome.");
                 }
             }
-
             return BadRequest("Player não encontrado!");
 
         }
@@ -201,7 +190,7 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="player"></param>
         /// <returns></returns>
         [HttpPatch("{id}")]
-        public async Task<IActionResult> Patch(int id, Player player)
+        public async Task<IActionResult> Patch(int id, PlayerDtoUpdate player)
         {
 
             var validaplayer = await _playerRep.BuscaPlayerPorId(id);
@@ -212,18 +201,9 @@ namespace MyTeam.API.V1.Controllers
 
                 if (validaNome == null)
                 {
-                    var validaPsn = await _playerRep.BuscaPlayerPorPsn(player.Psn);
-
-                    if (validaPsn == null)
-                    {
                         _crud.Update(player);
                         await _crud.SaveChangeAsync();
                         return Created($"/api/player/{player.Id}", player);
-                    }
-                    else
-                    {
-                        return Ok("Player já existe com esta PSN.");
-                    }
                 }
                 else
                 {
@@ -244,7 +224,6 @@ namespace MyTeam.API.V1.Controllers
         {
             var player = await _playerRep.BuscaPlayerPorId(id);
 
-
             if (player != null)
             {
                 _crud.Delete(player);
@@ -264,7 +243,6 @@ namespace MyTeam.API.V1.Controllers
         [HttpDelete("excluirplayerpornome/{nome}")]
         public async Task<IActionResult> DeletePorNome(string nome)
         {
-
             var player = await _playerRep.BuscaPlayerNome(nome);
 
             if (player != null)
@@ -273,7 +251,6 @@ namespace MyTeam.API.V1.Controllers
                 await _crud.SaveChangeAsync();
                 return Ok(player);
             }
-
             return BadRequest("Player não encontrado!");
         }
 

@@ -31,6 +31,7 @@
     ".NETCoreApp,Version=v3.1": {
       "MyTeam.API/1.0.0": {
         "dependencies": {
+          "AutoMapper": "10.1.1",
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "8.1.1",
           "Data": "1.0.0",
           "Dominio": "1.0.0",

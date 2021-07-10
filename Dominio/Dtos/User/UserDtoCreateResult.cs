@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace Dominio.Dtos.User
 {
-    public class UserDto
+    public class UserDtoCreateResult
     {
         public int Id { get; set; }
         public string Login { get; set; }
         public string Email { get; set; }
+        public DateTime CriadooEm { get; set; }
         public bool ResponsavelTime { get; set; }
     }
 }
