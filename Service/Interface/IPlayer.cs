@@ -12,10 +12,17 @@ namespace Service.Interface
 {
     public interface IPlayer
     {
-        Task<PageList<Player>> BuscaPlayers(PageParams pageParams, bool incluirTime = false);
+        Task<PageList<PlayerDto>> BuscaPlayers(PageParams pageParams, bool incluirTime = false);
 
         Task<PlayerDto> BuscaPlayerPorId(int id);
-        Task<Player> BuscaPlayerPorPsn(string psn);
-        Task<Player> BuscaPlayerPorNome(string nome);
+        Task<PlayerDto> BuscaPlayerPorPsn(string psn);
+        Task<PlayerDto> BuscaPlayerPorNome(string nome);
+
+
+        Task<PlayerDtoCreateResult> AdicionarPlayer(PlayerDtoCreate player);
+        Task<PlayerDtoUpdateResult> AtualizarPlayer(int id, PlayerDtoUpdate player);
+
+        void ExcluirPorId(int id);
+        void ExcluirPorNome(string nome);
     }
 }

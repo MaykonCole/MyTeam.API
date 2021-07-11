@@ -64,14 +64,14 @@
             <param name="id"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.PlayerController.GetPorNomeQueryString(System.String)">
+        <member name="M:MyTeam.API.V1.Controllers.PlayerController.GetPorNome(System.String)">
             <summary>
             Método responsavel por retornar apenas um único Player, de acordo o seu Nome.
             </summary>
             <param name="nome"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.PlayerController.GetPorPsnQueryString(System.String)">
+        <member name="M:MyTeam.API.V1.Controllers.PlayerController.GetPorPsn(System.String)">
             <summary>
             Método responsavel por retornar apenas um único Player, de acordo a sua PSN.
             </summary>

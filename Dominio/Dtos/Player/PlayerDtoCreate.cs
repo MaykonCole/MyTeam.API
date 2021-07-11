@@ -9,13 +9,15 @@ namespace Dominio.Dtos.Player
 {
     public class PlayerDtoCreate
     {
-        public int Id { get; set; }
         public string Nome { get; set; }
         public string Psn { get; set; }
-        public int Idade { get; set; }
+        public string Celular { get; set; }
+        public DateTime DataNascimento { get; set; }
+        public string PosicaoP { get; set; }
         public string PerfilPlayer { get; set; }
-        public DateTime CriadooEm { get; set; } = DateTime.Now;
+        public DateTime CriadoEm { get; set; } = DateTime.Now;
         public int? TeamId { get; set; }
-        public Team Team { get; set; }
+        public bool PlayerAtivo { get; set; } = true;
+        //public Team Team { get; set; }
     }
 }

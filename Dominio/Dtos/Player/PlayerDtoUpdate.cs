@@ -11,8 +11,10 @@ namespace Dominio.Dtos.Player
     {
         public int Id { get; set; }
         public string Nome { get; set; }
-        public int Idade { get; set; }
+        public string Celular { get; set; }
         public string PerfilPlayer { get; set; }
+
+        public string PosicaoP { get; set; }
 
         public DateTime AtualizadoEm { get; set; } = DateTime.Now;
 

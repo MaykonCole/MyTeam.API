@@ -12,7 +12,7 @@ namespace Dominio.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public DateTime CriadoEm{ get; set; }
+        public DateTime CriadoEm { get; set; } = DateTime.Now;
         public DateTime? AtualizadoEm { get; set; }
         public DateTime? ExcluidoEm { get; set; }
         [Required]

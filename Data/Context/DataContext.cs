@@ -18,6 +18,7 @@ namespace Data.Context
         public DbSet<Game> Games { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Player> Players { get; set; }
+        
 
         public DbSet<PlayerApp> PlayersApp { get; set; }
         public DbSet<Team> Times { get; set; }

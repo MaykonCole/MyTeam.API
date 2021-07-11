@@ -55,11 +55,9 @@ namespace MyTeam.API.V1.Controllers
         {
             var players = await _playerRep.BuscaPlayers(pageParams, false);
 
-           var playersdto = _mapper.Map<IEnumerable<PlayerDto>>(players);
-
             Response.AddPagination(players.AtualPagina, players.TamanhoPagina, players.ItemTotal, players.TotalPaginas);
 
-                return Ok(playersdto);
+            return Ok(players);
         }
 
         /// <summary>
@@ -72,8 +70,8 @@ namespace MyTeam.API.V1.Controllers
         {
             try
             {
-                var playerdto = await _playerRep.BuscaPlayerPorId(id);
-                return Ok(playerdto);
+                var playerDto = await _playerRep.BuscaPlayerPorId(id);
+                return Ok(playerDto);
             }
             catch (Exception e)
             {
@@ -88,14 +86,12 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="nome"></param>
         /// <returns></returns>
         [HttpGet("pornome/{nome}")]
-        public async Task<IActionResult> GetPorNomeQueryString(string nome)
+        public async Task<IActionResult> GetPorNome(string nome)
         {
             try
             {
                 //Busca o jogador
-                var player = await _playerRep.BuscaPlayerPorNome(nome);
-                // Mapeia o retorno para uma DTO
-                var playerDto = _mapper.Map<PlayerDto>(player);
+                var playerDto = await _playerRep.BuscaPlayerPorNome(nome);
                 // Retornar o PlayerDTO
                 return Ok(playerDto);
             }
@@ -111,14 +107,12 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="psn"></param>
         /// <returns></returns>
         [HttpGet("porpsn/{psn}")]
-        public async Task<IActionResult> GetPorPsnQueryString(string psn)
+        public async Task<IActionResult> GetPorPsn(string psn)
         {
             try
             {
                 //Busca o jogador
-                var player = await _playerRep.BuscaPlayerPorPsn(psn);
-                // Mapeia o retorno para uma DTO
-                var playerDto = _mapper.Map<PlayerDto>(player);
+                var playerDto = await _playerRep.BuscaPlayerPorPsn(psn);
                 // Retornar o PlayerDTO
                 return Ok(playerDto);
             }
@@ -138,32 +132,20 @@ namespace MyTeam.API.V1.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(PlayerDtoCreate player)
         {
-            if (player != null) {
-                
-
-               var validaNome = await _playerRep.BuscaPlayerPorNome(player.Nome);
-
-                if (validaNome == null)
+            try
+            {
+                PlayerDtoCreateResult playerresult;
+                if (ModelState.IsValid)
                 {
-                    var validaPsn = await _playerRep.BuscaPlayerPorPsn(player.Psn);
-
-                    if (validaPsn == null)
-                    {
-                        _crud.Add(player);
-                       await _crud.SaveChangeAsync();
-                        return Ok("Player cadastrado com sucesso.");
-                    }
-                    else
-                    {
-                        return Ok("Player já existe com esta PSN.");
-                    }            
+                    playerresult = await _playerRep.AdicionarPlayer(player);
+                    return Ok(playerresult);
                 }
-                else
-                {
-                    return Ok("Player já existe com este nome.");
-                }
+                return Ok("Dados do Player inválidos.");
             }
-            return BadRequest("Player invalido!");
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
 
         /// <summary>
@@ -175,24 +157,20 @@ namespace MyTeam.API.V1.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, PlayerDtoUpdate player)
         {
-            var validaplayer = await _playerRep.BuscaPlayerPorId(id);
-
-            if (validaplayer != null)
+            try
             {
-                var validaNome = await _playerRep.BuscaPlayerPorNome(player.Nome);
-
-                if (validaNome == null || validaplayer.Nome == player.Nome)
+                PlayerDtoUpdateResult playerresult;
+                if (ModelState.IsValid)
                 {
-                        _crud.Update(player);
-                        await _crud.SaveChangeAsync();
-                        return Ok("Player atualizado com sucesso.");
+                    playerresult = await _playerRep.AtualizarPlayer(id, player);
+                    return Ok(playerresult);
                 }
-                else
-                {
-                    return Ok("Player já existe com este nome.");
-                }
+                return Ok("Dados do Player inválidos.");
             }
-            return BadRequest("Player não encontrado!");
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
 
         }
 
@@ -233,18 +211,17 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("excluirplayerporid/{id}")]
-        public async Task<IActionResult> DeletePorId(int id)
+        public IActionResult DeletePorId(int id)
         {
-            var player = await _playerRep.BuscaPlayerPorId(id);
-
-            if (player != null)
+            try
             {
-                _crud.Delete(player);
-                await _crud.SaveChangeAsync();
-                return Ok(player);
+                _playerRep.ExcluirPorId(id);
+                return Ok("Jogador de ID " + id + " excluído com sucesso.");
             }
-
-            return BadRequest("Player não encontrado!");
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
 
         }
 
@@ -254,17 +231,18 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="nome"></param>
         /// <returns></returns>
         [HttpDelete("excluirplayerpornome/{nome}")]
-        public async Task<IActionResult> DeletePorNome(string nome)
+        public IActionResult DeletePorNome(string nome)
         {
-            var player = await _playerRep.BuscaPlayerPorNome(nome);
-
-            if (player != null)
+            try
             {
-                _crud.Delete(player);
-                await _crud.SaveChangeAsync();
-                return Ok(player);
+                _playerRep.ExcluirPorNome(nome);
+                return Ok("Jogador de Nome " + nome + " excluído com sucesso.");
             }
-            return BadRequest("Player não encontrado!");
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
+
         }
 
     }

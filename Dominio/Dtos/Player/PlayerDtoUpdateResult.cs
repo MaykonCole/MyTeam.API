@@ -10,11 +10,11 @@ namespace Dominio.Dtos.Player
     public class PlayerDtoUpdateResult
     {
         public int Id { get; set; }
-        public string Psn { get; set; }
-        public int Idade { get; set; }
+        public string Nome { get; set; }
+        public string Celular { get; set; }
         public string PerfilPlayer { get; set; }
-        public DateTime AtualizadoEm { get; set; }
-        public int? TimeId { get; set; }
-        public Team Time { get; set; }
+        public string PosicaoP { get; set; }
+        public DateTime AtualizadoEm { get; set; } 
+
     }
 }
