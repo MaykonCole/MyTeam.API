@@ -12,7 +12,7 @@ namespace Service.Interface
 {
     public interface IPlayer
     {
-        Task<PageList<PlayerDto>> BuscaPlayers(PageParams pageParams, bool incluirTime = false);
+        Task<PageList<Player>> BuscaPlayers(PageParams pageParams, bool incluirTime = false);
 
         Task<PlayerDto> BuscaPlayerPorId(int id);
         Task<PlayerDto> BuscaPlayerPorPsn(string psn);
@@ -22,7 +22,7 @@ namespace Service.Interface
         Task<PlayerDtoCreateResult> AdicionarPlayer(PlayerDtoCreate player);
         Task<PlayerDtoUpdateResult> AtualizarPlayer(int id, PlayerDtoUpdate player);
 
-        void ExcluirPorId(int id);
-        void ExcluirPorNome(string nome);
+       Task ExcluirPorId(int id);
+        Task ExcluirPorNome(string nome);
     }
 }

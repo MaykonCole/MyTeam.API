@@ -6,6 +6,7 @@ using Dominio.Models;
 using Microsoft.EntityFrameworkCore;
 using Service.Interface;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,7 +26,7 @@ namespace Service.Repository
             _crud = crud;
         }
 
-        public async Task<PageList<PlayerDto>> BuscaPlayers(PageParams pageParams, bool incluirTime = false)
+        public async Task<PageList<Player>> BuscaPlayers(PageParams pageParams, bool incluirTime = false)
         {
 
             IQueryable<Player> query = _context.Players;
@@ -53,12 +54,11 @@ namespace Service.Repository
                 query = query.Where(player => player.PlayerAtivo == (pageParams.PlayerAtivo != 0));
             }
 
-            if(query == null)
+            if (query == null)
                 throw new Exception("Lista vazia ou inválida.");
 
-            IQueryable<PlayerDto> playersdto = _mapper.Map<IQueryable<PlayerDto>>(query);
 
-            return await PageList<PlayerDto>.CreateAsync(playersdto, pageParams.PageNumber, pageParams.PageSize);
+            return await PageList<Player>.CreateAsync(query, pageParams.PageNumber, pageParams.PageSize);
         }
 
         public async Task<PlayerDto> BuscaPlayerPorNome(string nome)
@@ -148,7 +148,7 @@ namespace Service.Repository
             return playerDtoResult;
         }
 
-        public async void ExcluirPorId(int id)
+        public async Task ExcluirPorId(int id)
         {
             var players = _context.Players;
             var player =  await players.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id);
@@ -156,12 +156,12 @@ namespace Service.Repository
             if (player == null)
                 throw new Exception("Jogador com ID " + id + " não existe.");
 
-            _crud.Delete(player);
+             _crud.Delete(player);
             await _crud.SaveChangeAsync();
 
         }
 
-        public async void ExcluirPorNome(string nome)
+        public async Task ExcluirPorNome(string nome)
         {
             var players = _context.Players;
             var player = await players.AsNoTracking().FirstOrDefaultAsync(p => p.Nome == nome);

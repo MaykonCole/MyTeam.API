@@ -79,7 +79,6 @@ namespace MyTeam.API.V1.Controllers
             }
         }
 
-
         /// <summary>
         /// Método responsavel por retornar apenas um único Player, de acordo o seu Nome.
         /// </summary>
@@ -121,8 +120,6 @@ namespace MyTeam.API.V1.Controllers
                 return Ok(e.Message);
             }
         }
-
-
 
         /// <summary>
         /// Método responsavel por adicionar um novo Player.
@@ -171,7 +168,6 @@ namespace MyTeam.API.V1.Controllers
             {
                 return Ok(e.Message);
             }
-
         }
 
         /// <summary>
@@ -183,7 +179,6 @@ namespace MyTeam.API.V1.Controllers
         [HttpPatch("{id}")]
         public async Task<IActionResult> Patch(int id, PlayerDtoUpdate player)
         {
-
             var validaplayer = await _playerRep.BuscaPlayerPorId(id);
 
             if (validaplayer != null)
@@ -211,18 +206,17 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpDelete("excluirplayerporid/{id}")]
-        public IActionResult DeletePorId(int id)
+        public async Task<IActionResult> DeletePorId(int id)
         {
             try
             {
-                _playerRep.ExcluirPorId(id);
+                await _playerRep.ExcluirPorId(id);
                 return Ok("Jogador de ID " + id + " excluído com sucesso.");
             }
             catch (Exception e)
             {
                 return Ok(e.Message);
             }
-
         }
 
         /// <summary>
@@ -231,19 +225,17 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="nome"></param>
         /// <returns></returns>
         [HttpDelete("excluirplayerpornome/{nome}")]
-        public IActionResult DeletePorNome(string nome)
+        public async Task<IActionResult> DeletePorNome(string nome)
         {
             try
             {
-                _playerRep.ExcluirPorNome(nome);
+                await _playerRep.ExcluirPorNome(nome);
                 return Ok("Jogador de Nome " + nome + " excluído com sucesso.");
             }
             catch (Exception e)
             {
                 return Ok(e.Message);
             }
-
         }
-
     }
 }
