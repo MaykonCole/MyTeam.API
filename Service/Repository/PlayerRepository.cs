@@ -111,6 +111,7 @@ namespace Service.Repository
             if (validaPsn != null)
                 throw new Exception("Já existe um Player utilizando esta PSN : " + playerDtoCreate.Psn);
 
+
             var player = _mapper.Map<Player>(playerDtoCreate);
 
             _crud.Add(player);

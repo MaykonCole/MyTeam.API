@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Data.Context;
+using Dominio.Dtos.User;
 using Dominio.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -26,7 +27,6 @@ namespace MyTeam.API.V1.Controllers
         private readonly ICrud _crud;
         private readonly IUser _userRep;
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -36,7 +36,6 @@ namespace MyTeam.API.V1.Controllers
         {
             _crud = crud;
             _userRep = userrep;
-          
         }
 
         /// <summary>
@@ -47,9 +46,15 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _userRep.BuscaUsers());
+            try
+            {
+                return Ok(await _userRep.BuscaUsers());
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
-
         /// <summary>
         /// Método responsável para retornar 1 usuário cadastrado, de acordo o seu login
         /// </summary>
@@ -58,7 +63,15 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("{login}")]
         public async Task<IActionResult> GetNome(string login)
         {
-            return Ok(await _userRep.BuscaUserPorLogin(login));
+            try
+            {
+                return Ok(await _userRep.BuscaUserPorLogin(login));
+            }
+            catch (Exception e)
+            {
+               return Ok(e.Message);
+            }
+           
         }
 
         /// <summary>
@@ -70,7 +83,14 @@ namespace MyTeam.API.V1.Controllers
         [HttpGet("poremail/{email}")]
         public async Task<IActionResult> GetEmail(string email)
         {
-            return Ok(await _userRep.BuscaUserPorEmail(email));
+            try
+            {
+                return Ok(await _userRep.BuscaUserPorEmail(email));
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
 
 
@@ -80,33 +100,22 @@ namespace MyTeam.API.V1.Controllers
         /// <param name="user"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<IActionResult> Post(User user)
+        public async Task<IActionResult> Post(UserDtoCreate user)
         {
-            if (user != null)
+            try
             {
-                var validaLogin = await _userRep.BuscaUserPorLogin(user.Login);
-
-                if (validaLogin == null)
+                UserDtoCreateResult userresult;
+                if (ModelState.IsValid)
                 {
-                    var validaEmail = await _userRep.BuscaUserPorEmail(user.Email);
-
-                    if (validaEmail == null)
-                    {
-                        _crud.Add(user);
-                        await _crud.SaveChangeAsync();
-                        return Ok("Usuario " + user.Login + " cadastrado com sucesso.");
-                    }
-                    else
-                    {
-                        return Ok("Usuário já existe com este Email.");
-                    }
+                    userresult = await _userRep.AdicionarUser(user);
+                    return Ok(userresult);
                 }
-                else
-                {
-                    return Ok("Usuario ja cadastrado com este Login.");
-                }
+                return Ok("Dados do Usuário inválidos.");
             }
-            return BadRequest("Usuário invalido!");
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
 
         /// <summary>
@@ -163,7 +172,6 @@ namespace MyTeam.API.V1.Controllers
             {
                 return Ok("Usuário não localizado.");
             }
-          
         }
     }
 }

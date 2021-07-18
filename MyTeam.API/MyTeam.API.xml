@@ -146,7 +146,7 @@
             /// <param name="email"></param>
             <returns></returns>
         </member>
-        <member name="M:MyTeam.API.V1.Controllers.UserController.Post(Dominio.Models.User)">
+        <member name="M:MyTeam.API.V1.Controllers.UserController.Post(Dominio.Dtos.User.UserDtoCreate)">
             <summary>
             Método responsavel por adicionar um novo Usuário.
             </summary>

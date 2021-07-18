@@ -1,4 +1,6 @@
-﻿using Data.Context;
+﻿using AutoMapper;
+using Data.Context;
+using Dominio.Dtos.User;
 using Dominio.Models;
 using Microsoft.EntityFrameworkCore;
 using Service.Interface;
@@ -13,44 +15,110 @@ namespace Service.Repository
    public class UserRepository : IUser
     {
 
+        private readonly ICrud _crud;
         private readonly DataContext _context;
-        public UserRepository(DataContext context)
+        private readonly IMapper _mapper;
+
+        public UserRepository(ICrud crud, DataContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
+            _crud = crud;
         }
-        public async Task<IEnumerable<User>> BuscaUsers()
+        public async Task<IEnumerable<UserDto>> BuscaUsers()
         {
-            IQueryable<User> query = _context.Users;
+            var usuarios =  _context.Users;
 
-            query = query.AsNoTracking().OrderBy(u => u.Login);
+            var todosusuarios = await usuarios.AsNoTracking().Where(x => x.Ativo == true).ToListAsync();
 
-            return await query.ToArrayAsync();
-        }
+            if (todosusuarios.Count <= 0)
+                throw new Exception("Nenhum Usuário foi encontrado.");
 
-        public async Task<User> BuscaUserPorId(int id)
-        {
-            IQueryable<User> query = _context.Users;
+            var usuariosdto = _mapper.Map<IEnumerable<UserDto>>(todosusuarios);
 
-            query = query.AsNoTracking().Where(u => u.Id == id);
-
-            return await query.FirstOrDefaultAsync();
-        }
-        public async Task<User> BuscaUserPorLogin(string login)
-        {
-            IQueryable<User> query = _context.Users;
-
-            query = query.AsNoTracking().Where(u => u.Login == login);
-
-            return await query.FirstOrDefaultAsync();
+            return usuariosdto;
         }
 
-        public async Task<User> BuscaUserPorEmail(string email)
+        public async Task<UserDto> BuscaUserPorId(int id)
         {
-            IQueryable<User> query = _context.Users;
+            var usuarios = _context.Users;
 
-            query = query.AsNoTracking().Where(u => u.Email == email);
+            var user = await usuarios.AsNoTracking().FirstOrDefaultAsync(u => u.Id == id);
 
-            return await query.FirstOrDefaultAsync();
+            if (user == null)
+                throw new Exception("Usuário com ID : " + id + " não localizado.");
+            var userDto = _mapper.Map<UserDto>(user);
+
+            return userDto;
+        }
+        public async Task<UserDto> BuscaUserPorLogin(string login)
+        {
+            var usuarios = _context.Users;
+
+           var user = await usuarios.AsNoTracking().FirstOrDefaultAsync(u => u.Login == login);
+
+            if (user == null)
+                throw new Exception("Usuário com Login : " + login + " não localizado.");
+
+            var userDto = _mapper.Map<UserDto>(user);
+
+            return userDto;
+        }
+        public async Task<UserDto> BuscaUserPorEmail(string email)
+        {
+            var usuarios = _context.Users;
+
+            var user = await usuarios.AsNoTracking().FirstOrDefaultAsync(u => u.Email == email);
+
+            if (user == null)
+                throw new Exception("Usuário com Email : " + email + " não localizado.");
+
+            var userDto = _mapper.Map<UserDto>(user);
+
+            return userDto;
+        }
+
+        public async Task<UserDtoCreateResult> AdicionarUser(UserDtoCreate userDtoCreate)
+        {
+            var usuarios = _context.Users;
+
+            if (userDtoCreate == null)
+                throw new Exception("Usuário NULO não pode ser adicionado.");
+
+            var validaLogin = await usuarios.AsNoTracking().FirstOrDefaultAsync(u => u.Login.Equals(userDtoCreate.Login));
+            if (validaLogin != null)
+                throw new Exception("Já existe um Usuário utilizando este Login : " + userDtoCreate.Login);
+
+            var validaEmail = await usuarios.AsNoTracking().FirstOrDefaultAsync(u => u.Email.Equals(userDtoCreate.Email));
+            if (validaEmail != null)
+                throw new Exception("Já existe um Usuário utilizando este Email : " + userDtoCreate.Email);
+
+            userDtoCreate.CriadooEm = DateTime.Now;
+            userDtoCreate.Ativo = true;
+
+            var user = _mapper.Map<User>(userDtoCreate);
+
+            _crud.Add(user);
+            await _crud.SaveChangeAsync();
+
+            var userDtoResult = _mapper.Map<UserDtoCreateResult>(userDtoCreate);
+
+            return userDtoResult;
+        }
+
+        public Task<UserDtoUpdateResult> AtualizarUser(int id, UserDtoUpdate User)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ExcluirUserPorId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task ExcluirUserPorLogin(string nome)
+        {
+            throw new NotImplementedException();
         }
     }
 }

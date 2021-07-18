@@ -10,8 +10,6 @@ namespace Dominio.Dtos.User
 {
     public class UserDtoCreate
     {
-        [Key]
-        public int Id { get; set; }
 
         [StringLength(20, MinimumLength = 2, ErrorMessage = "Login deve conter entre 2 e 20 caracteres.")]
         [Required]

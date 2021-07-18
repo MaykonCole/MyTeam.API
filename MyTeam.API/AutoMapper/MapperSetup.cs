@@ -19,7 +19,12 @@ namespace MyTeam.API.AutoMapper
             CreateMap<Player, PlayerDtoUpdate>().ReverseMap();
             CreateMap<PlayerDtoUpdate, PlayerDtoUpdateResult>().ReverseMap();
             CreateMap<PlayerDtoUpdateResult, Player>().ReverseMap();
+
             CreateMap<User, UserDto>().ReverseMap();
+            CreateMap<User, UserDtoCreate>().ReverseMap();
+            CreateMap<UserDtoCreate, UserDtoCreateResult>().ReverseMap();
+            CreateMap<UserDtoUpdate, UserDtoUpdateResult>().ReverseMap();
+            CreateMap<UserDtoUpdateResult, User>().ReverseMap();
 
         }
     }

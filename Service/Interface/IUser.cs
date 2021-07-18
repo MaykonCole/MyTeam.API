@@ -1,4 +1,5 @@
-﻿using Dominio.Models;
+﻿using Dominio.Dtos.User;
+using Dominio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,9 +10,15 @@ namespace Service.Interface
 {
     public interface IUser
     {
-        Task<IEnumerable<User>> BuscaUsers();
-        Task<User> BuscaUserPorId(int id);
-        Task<User> BuscaUserPorLogin(string login);
-        Task<User> BuscaUserPorEmail(string email);
+        Task<IEnumerable<UserDto>> BuscaUsers();
+        Task<UserDto> BuscaUserPorId(int id);
+        Task<UserDto> BuscaUserPorLogin(string login);
+        Task<UserDto> BuscaUserPorEmail(string email);
+
+        Task<UserDtoCreateResult> AdicionarUser(UserDtoCreate User);
+        Task<UserDtoUpdateResult> AtualizarUser(int id, UserDtoUpdate User);
+
+        Task ExcluirUserPorId(int id);
+        Task ExcluirUserPorLogin(string nome);
     }
 }
